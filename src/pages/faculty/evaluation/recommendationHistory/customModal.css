@@ -1,0 +1,6 @@
+/* customModal.css */
+.chakra-modal-size-custom {
+  max-width: 50%;
+  width: 50%;
+  height: 50%;
+}

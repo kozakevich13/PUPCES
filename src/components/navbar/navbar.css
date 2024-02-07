@@ -1,0 +1,33 @@
+.avatar-circle {
+  border-radius: 100%;
+  background-color:#740202 ;
+  color: #E5F4E2;
+  
+  padding:12px 13px;
+  cursor: pointer;
+
+}
+
+.navbar {
+ 
+  transition: opacity 0.3s ease; 
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  padding-bottom: 3px; /* Add spacing between text and line */
+}
+
+.nav-link.active {
+  border-bottom: 2px solid #000; /* Line style for active link */
+}
+
+.nav-link.drawer.active {
+  width: fit-content;
+}

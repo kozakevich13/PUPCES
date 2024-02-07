@@ -1,0 +1,30 @@
+@media (max-width: 500px) { /* Adjust the breakpoint as needed */
+  table {
+    display: block;
+  
+  }
+  table thead {
+    display: none; /* Hide the table headers */
+  }
+  table tbody {
+    display: block;
+  }
+  table tr {
+    margin-bottom: 1rem; /* Add some spacing between rows */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+}
+.course-title-cell {
+  max-width: 250px; /* Set the desired maximum width */
+  white-space: normal; /* Allow text to wrap to the next line */
+ line-height: 1.7;
+  
+}
+.button-clicked {
+  background-color: rgb(255, 255, 255); /* Change the background color when clicked */
+  pointer-events: none; /* Disable pointer events to prevent further clicks */
+  transition: background-color 0.2s ease-in-out; /* Add a transition effect for smooth color change */
+}

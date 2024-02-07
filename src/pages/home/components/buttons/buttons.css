@@ -1,0 +1,168 @@
+@media screen and (min-width: 2400px) and (max-width: 2560px) {
+  .logo {
+    margin-left: 650px;
+    margin-top: 100px;
+    width: 500px;
+  }
+  .text {
+    margin-top: 200px;
+    font-size: 60px;
+    width: 50rem;
+  }
+  .tapText {
+    margin-left: 300px;
+    margin-top: 60px;
+  }
+  .tap {
+    font-size: 20px;
+  }
+
+  .buttonStudent {
+    margin-bottom: 400px;
+    margin-left: 400px;
+    width: 100px;
+  }
+  .buttonFaculty {
+    margin-left: 400px;
+  }
+}
+
+@media screen and (min-width: 1999px) and (max-width: 2399px) {
+  .logo {
+    margin-left: 600px;
+    margin-top: 100px;
+  }
+  .text {
+    margin-top: 160px;
+    font-size: 50px;
+    width: 50rem;
+  }
+  .tapText {
+    margin-left: 300px;
+    margin-top: 60px;
+  }
+  .tap {
+    font-size: 20px;
+  }
+  .buttonStudent {
+    margin-bottom: 400px;
+    margin-left: 400px;
+    width: 100px;
+  }
+  .buttonFaculty {
+    margin-left: 400px;
+  }
+}
+
+@media screen and (min-width: 2050px) and (max-width: 2322px) {
+  .logo {
+    margin-right: 200px;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1944px) {
+  .logo {
+    margin-left: 200px;
+    margin-top: 100px;
+  }
+  .text {
+    margin-top: 160px;
+    font-size: 25px;
+    width: 35rem;
+  }
+  .tapText {
+    margin-left: 20px;
+    margin-top: 60px;
+  }
+  .tap {
+    font-size: 25px;
+  }
+  .buttonStudent {
+    margin-bottom: 400px;
+    margin-left: 100px;
+    width: 200px;
+  }
+  .buttonFaculty {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (min-width: 1552px) and (max-width: 1617px) {
+  .logo {
+    margin-right: 100px;
+  }
+}
+
+/* @media screen and (min-width: 1260px) and (max-width: 1551px) {
+  .logo {
+    margin-right: 100px;
+    margin-top: 100px;
+  }
+  .text {
+    margin-top: 160px;
+    font-size: 25px;
+    width: 30rem;
+  }
+  .buttonStudent {
+    margin-bottom: 400px;
+    margin-left: 80px;
+    width: 200px;
+  }
+  .buttonFaculty {
+    margin-left: 80px;
+  }
+} */
+/* @media screen and (min-width: 1353px) and (max-width: 1255px) {
+  .logo {
+    margin-right: 100px;
+    margin-top: 100px;
+  }
+  .text {
+    margin-top: 160px;
+    font-size: 25px;
+    width: 30rem;
+  }
+  .tapText {
+    margin-left: -200px;
+    margin-top: 60px;
+  }
+  .buttonStudent {
+    margin-bottom: 400px;
+    margin-left: 80px;
+    width: 200px;
+  }
+  .buttonFaculty {
+    margin-left: 80px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1352px) {
+  .logo {
+    margin-top: 100px;
+    margin-left: -100px;
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1188px) {
+  .logo {
+    margin-top: 200px;
+    margin-left: -280px;
+  }
+  .text {
+    margin-top: 200px;
+    font-size: 25px;
+    margin-left: -100px;
+    width: 30rem;
+  }
+  .tapText {
+    margin-left: -200px;
+    margin-top: 60px;
+  }
+  .buttonStudent {
+    margin-bottom: 400px;
+    margin-right: 60px;
+    width: 200px;
+  }
+  .buttonFaculty {
+    margin-right: 80px;
+  }
+} */
