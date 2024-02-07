@@ -1,10 +1,14 @@
 import {
   Box,
-  Link as ChakraLink,
   Flex,
   HStack,
   Image,
   Text,
+  Link as ChakraLink,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -63,17 +67,17 @@ function Navbar() {
 
   return (
     <Box
-      w="100%"
+      w="100vw"
       pos="sticky"
       h="6rem"
       boxShadow="lg"
       top="0"
       right="0"
       bgColor="#F3F8FF"
-      zIndez="1"
+      zIndex="1"
     >
       <Flex
-        padding="0 14.2rem"
+        px={{ base: "4", md: "14.2rem" }} // Responsive padding
         justifyContent="space-between"
         alignItems="center"
         h="100%"
@@ -89,26 +93,64 @@ function Navbar() {
             PUPCES
           </Text>
         </HStack>
-        <Flex gap={34} mr="30rem">
+
+        <Box display={{ base: "block", md: "none" }}>
+          <Menu>
+            <MenuButton as={Box} px={4} py={2} transition="all 0.2s">
+              Menu
+            </MenuButton>
+            <MenuList>
+              <MenuItem>
+                <NavLink
+                  to="/studentdashboard"
+                  activeClassName="active"
+                  className="nav-link"
+                >
+                  Home
+                </NavLink>
+              </MenuItem>
+              <MenuItem>
+                <NavLink
+                  to="/curriculum"
+                  activeClassName="active"
+                  className="nav-link"
+                >
+                  Curriculum
+                </NavLink>
+              </MenuItem>
+              <MenuItem>
+                <NavLink
+                  to="/analysis"
+                  activeClassName="active"
+                  className="nav-link"
+                >
+                  Evaluation
+                </NavLink>
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </Box>
+
+        <Flex
+          gap={34}
+          mr={{ base: "0", md: "30rem" }}
+          display={{ base: "none", md: "flex" }}
+        >
           <NavLink
             to="/studentdashboard"
-            activeclassname="active"
+            activeClassName="active"
             className="nav-link"
           >
             Home
           </NavLink>
           <NavLink
             to="/curriculum"
-            activeclassname="active"
+            activeClassName="active"
             className="nav-link"
           >
             Curriculum
           </NavLink>
-          <NavLink
-            to="/analysis"
-            activeclassname="active"
-            className="nav-link" // You can define a CSS class for styling other links
-          >
+          <NavLink to="/analysis" activeClassName="active" className="nav-link">
             Evaluation
           </NavLink>
         </Flex>
