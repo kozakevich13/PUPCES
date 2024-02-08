@@ -273,7 +273,7 @@ function Achiever() {
   return (
     <Card mt="2rem" w="100%" h="auto" boxShadow="2xl" borderRadius="30px">
       <div ref={containerRef}>
-        <Flex justify="space-between" align="center" overflow="scroll">
+        <Flex justify="space-between" align="center">
           <CardHeader>Student(s) that are Listers</CardHeader>
           <HStack>
             <Select
