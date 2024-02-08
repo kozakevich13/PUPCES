@@ -81,7 +81,9 @@ function FacultyNavbar() {
       boxShadow="none"
       top="0"
       right="0"
-      className={navbarClasses}
+      bgColor="#F3F8FF"
+      zIndex="1"
+      // className={navbarClasses}
     >
       <Flex
         justifyContent="space-between"
