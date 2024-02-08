@@ -416,14 +416,18 @@ export default function StudentDashboard() {
       </Box>
 
       <Wrap justifyContent="center" alignContent="center" flex="30" mt="10rem">
-        <HStack justifyContent="center" spacing="30rem" w="100%">
-          <VStack spacing="2rem">
+        <HStack
+          justifyContent="center"
+          spacing={{ base: "1rem", md: "3rem", lg: "5rem" }}
+          w="100vw"
+        >
+          <VStack spacing={{ base: "1rem", md: "2rem", lg: "3rem" }}>
             <Text
-              fontSize="20px"
+              fontSize={{ base: "16px", md: "20px", lg: "24px" }}
               fontWeight="semibold"
               fontStyle="Bitter"
               textAlign="center"
-              ml="7rem"
+              ml={{ base: "0", md: "7rem" }}
             >
               {/* {student.program_id === 1
                 ? "Bachelor of Science in Information Technology"
@@ -436,23 +440,33 @@ export default function StudentDashboard() {
             </Text>
             <HStack>
               <Text
-                fontSize="20px"
+                fontSize={{ base: "16px", md: "20px", lg: "24px" }}
                 fontWeight="semibold"
                 fontStyle="Bitter"
                 textAlign="center"
-                ml="7rem"
+                ml={{ base: "0", md: "7rem" }}
               >
                 {capitalizeWords(student.first_name)}{" "}
                 {capitalizeWords(student.middle_name)}{" "}
                 {capitalizeWords(student.last_name)}
               </Text>
 
-              <Text fontSize="20px">({student.student_number})</Text>
+              <Text
+                fontSize={{ base: "16px", md: "20px", lg: "24px" }}
+              >{`(${student.student_number})`}</Text>
             </HStack>
           </VStack>
-          <HStack mt="2rem" mr="3rem">
-            <Text fontSize="20px">Status:</Text>
-            <Text fontSize="20px" fontWeight="semibold">
+          <HStack
+            mt={{ base: "1rem", md: "2rem", lg: "3rem" }}
+            mr={{ base: "1rem", md: "2rem", lg: "3rem" }}
+          >
+            <Text fontSize={{ base: "16px", md: "20px", lg: "24px" }}>
+              Status:
+            </Text>
+            <Text
+              fontSize={{ base: "16px", md: "20px", lg: "24px" }}
+              fontWeight="semibold"
+            >
               {status}
             </Text>
           </HStack>
@@ -501,7 +515,7 @@ export default function StudentDashboard() {
                       fontWeight="semibold"
                       fontSize="lg"
                       mb="4"
-                      padding="2rem"
+                      padding="1rem"
                     >
                       You have {totalCreditUnits} credit units and taken{" "}
                       {validatedTotalUnits} credit unit(s) and have{" "}
