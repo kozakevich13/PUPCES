@@ -332,9 +332,16 @@ function StudentPerYear() {
         return 0; // default value or handle other cases if needed
     }
   };
+  const isSmallScreen = window.innerWidth < 400;
 
   return (
-    <Card mt="2rem" w="100%" h="50rem" boxShadow="2xl" borderRadius="30px">
+    <Card
+      mt="2rem"
+      w="100%"
+      h={{ base: "30rem", md: "50rem", lg: "50rem" }}
+      boxShadow="2xl"
+      borderRadius="30px"
+    >
       <CardHeader>Students by Year</CardHeader>
       <Divider bg="gray.300" />
       <CardBody ml="2rem" justifyContent="center">
@@ -345,11 +352,19 @@ function StudentPerYear() {
 
           <Box
             display={selectedLabel ? "block" : "none"}
-            width="35rem"
+            width={{ base: "80%", md: "35rem" }}
+            mx={isSmallScreen ? "auto" : "0"}
+            mt={isSmallScreen ? "5rem" : "0"}
             height="18rem"
             borderRadius="8px"
             boxShadow="0 4px 8px rgba(0, 0, 0, 0.3)"
             padding="2rem 2rem"
+            bg="white"
+            zIndex="999"
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
           >
             <HStack justifyContent="space-between">
               <Text> {selectedLabel}</Text>

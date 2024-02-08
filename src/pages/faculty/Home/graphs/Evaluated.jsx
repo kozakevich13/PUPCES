@@ -28,6 +28,7 @@ function Evaluated() {
   const facultyEmail = Cookies.get("facultyEmail");
   const [facultyId, setFacultyId] = useState();
   const [facultyprogram, setFacultyProgram] = useState([]);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
 
   useEffect(() => {
     if (facultyEmail) {
@@ -46,6 +47,18 @@ function Evaluated() {
         });
     }
   }, [facultyEmail]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 600);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   //fetch evaluate
   useEffect(() => {
@@ -148,12 +161,20 @@ function Evaluated() {
       <div ref={containerRef}>
         <Flex justify="space-between" align="center">
           <CardHeader>List of Evaluated Students</CardHeader>
-          <HStack>
+          <HStack
+            spacing={{ base: "1rem", sm: "2rem" }}
+            justifyContent={{ base: "center", sm: "flex-start" }}
+            flexWrap="wrap"
+          >
             <Select
               value={selectedSemester}
               onChange={(e) => setSelectedSemester(e.target.value)}
               placeholder="Semester"
-              w="10rem"
+              w={{ base: "100%", sm: "10rem" }}
+              mb={{ base: "0.5rem", sm: "0" }}
+              mt="1rem"
+              mr="1rem"
+              ml="auto"
             >
               <option value="First Semester">First Semester</option>
               <option value="Second Semester">Second Semester</option>
@@ -162,7 +183,10 @@ function Evaluated() {
               value={selectedYearLevel}
               onChange={(e) => setSelectedYearLevel(e.target.value)}
               placeholder="Year Level"
-              w="10rem"
+              w={{ base: "100%", sm: "10rem" }}
+              mr="1rem"
+              mt={isSmallScreen ? "0" : "1rem"}
+              ml="auto"
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -170,7 +194,9 @@ function Evaluated() {
               <option value="4">4</option>
             </Select>
             <Button
-              mr="4rem"
+              mr="2rem"
+              mt={isSmallScreen ? "0" : "1rem"}
+              ml="auto"
               colorScheme="teal"
               style={{
                 color: "white",
@@ -191,7 +217,7 @@ function Evaluated() {
           </HStack>
         </Flex>
         <Divider bg="gray.300" />
-        <CardBody ml="2rem" justifyContent="center">
+        <CardBody justifyContent="center">
           <TableContainer>
             <Table>
               <Thead bg="palette.primary" h="2rem">

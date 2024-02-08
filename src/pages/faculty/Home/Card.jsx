@@ -217,7 +217,11 @@ function Card() {
           </Box>
         </HStack>
 
-        <Text mt="5rem">
+        <Text
+          mt="5rem"
+          maxW={{ base: "100%", md: "80%", lg: "60%" }}
+          textAlign="center"
+        >
           There is a total of {totalStudents} student(s) in {programName} with
           the total of {femaleStudents} Female Student(s) and {maleStudents}{" "}
           Male Student(s)

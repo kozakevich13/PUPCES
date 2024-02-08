@@ -118,13 +118,34 @@ const PieChart = ({ onLabelSelect }) => {
     },
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 992,
         options: {
           chart: {
-            width: 200,
+            width: "800",
           },
-          legend: {
-            position: "bottom",
+        },
+      },
+      {
+        breakpoint: 768,
+        options: {
+          chart: {
+            width: "500",
+          },
+        },
+      },
+      {
+        breakpoint: 580,
+        options: {
+          chart: {
+            width: "400",
+          },
+        },
+      },
+      {
+        breakpoint: 380,
+        options: {
+          chart: {
+            width: "300",
           },
         },
       },

@@ -33,6 +33,7 @@ function Achiever() {
   const [selectedYearLevel, setSelectedYearLevel] = useState("");
   const [studentNumberWithGrades, setStudentNumberWithGrades] = useState([]);
   const [startYear, setStartYear] = useState("");
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
 
   const containerRef = useRef(null);
 
@@ -77,6 +78,18 @@ function Achiever() {
         });
     }
   }, [facultyEmail]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 600);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   //fetch students
   useEffect(() => {
@@ -275,15 +288,23 @@ function Achiever() {
       <div ref={containerRef}>
         <Flex justify="space-between" align="center">
           <CardHeader>Student(s) that are Listers</CardHeader>
-          <HStack>
+          <HStack
+            spacing={{ base: "1rem", sm: "2rem" }}
+            justifyContent={{ base: "center", sm: "flex-start" }}
+            flexWrap="wrap"
+          >
             <Select
               value={selectedYearLevel}
               onChange={(e) => {
                 setSelectedYearLevel(e.target.value);
-                setSelectedAcademicYear(""); // Reset academic year when changing year level
+                setSelectedAcademicYear("");
               }}
               placeholder="Year Level"
-              w="10rem"
+              w={{ base: "100%", sm: "10rem" }}
+              mb={{ base: "1rem", sm: "0" }}
+              mt="1rem"
+              mr="1rem"
+              ml="auto"
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -294,8 +315,12 @@ function Achiever() {
               value={selectedAcademicYear}
               onChange={(e) => setSelectedAcademicYear(e.target.value)}
               placeholder="Academic Year"
-              w="10rem"
+              w={{ base: "100%", sm: "10rem" }}
               disabled={!startYear || !selectedYearLevel}
+              mr="1rem"
+              mt={isSmallScreen ? "0" : "1rem"}
+              ml="auto"
+              // mb={{ base: "1rem", sm: "0" }}
             >
               <option value="1">
                 {parseInt(startYear)} - {parseInt(startYear) + 1}
@@ -311,7 +336,9 @@ function Achiever() {
               </option>
             </Select>
             <Button
-              mr="4rem"
+              mr="2rem"
+              mt={isSmallScreen ? "0" : "1rem"}
+              ml="auto"
               colorScheme="teal"
               style={{
                 color: "white",
@@ -332,7 +359,7 @@ function Achiever() {
           </HStack>
         </Flex>
         <Divider bg="gray.300" />
-        <CardBody ml="2rem" justifyContent="center">
+        <CardBody justifyContent="center">
           <TableContainer>
             <Table>
               <Thead bg="palette.primary" h="2rem">
