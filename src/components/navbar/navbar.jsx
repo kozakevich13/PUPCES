@@ -8,8 +8,16 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  IconButton,
   Link as ChakraLink,
 } from "@chakra-ui/react";
+import { handleScroll } from "./handleNavbar";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
@@ -19,11 +27,14 @@ import { NavLink, Link as RouterLink } from "react-router-dom";
 import logo from "../../assets/PUPlogo.png";
 import "../../components/navbar/navbar.css";
 import { endPoint } from "../../pages/config";
+import { HiMenu } from "react-icons/hi";
 
 function Navbar() {
   const studentNumber = Cookies.get("student_number");
 
   const [studentName, setStudentName] = useState("");
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,47 +53,56 @@ function Navbar() {
     fetchData();
   }, [studentNumber]);
   console.log("Student Name in Navbar", studentName);
-  // const scrollCallback = () => {
-  //   if (window.scrollY > 100) {
-  //     setShowNavbar(false);
-  //   } else {
-  //     setShowNavbar(true);
-  //   }
-  // };
 
-  // useEffect(() => {
-  //   const cleanupScrollHandler = handleScroll(scrollCallback);
+  const scrollCallback = () => {
+    if (window.scrollY > 100) {
+      setShowNavbar(false);
+    } else {
+      setShowNavbar(true);
+    }
+  };
 
-  //   return () => {
-  //     cleanupScrollHandler();
-  //   };
-  // }, []);
+  useEffect(() => {
+    const cleanupScrollHandler = handleScroll(scrollCallback);
 
-  // const navbarClasses = `navbar ${showNavbar ? "" : "fade-out"}`;
+    return () => {
+      cleanupScrollHandler();
+    };
+  }, []);
+
+  const handleDrawerOpen = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+  };
 
   // const activeLinkStyle = {
   //   borderBottom: "2px solid #000", // You can adjust the style here
   //   paddingBottom: "3px", // Optional: Add some spacing between the text and the line
   // };
+  const navbarClasses = `navbar ${showNavbar ? "" : "fade-out"}`;
 
   return (
     <Box
-      w="100vw"
-      pos="sticky"
+      w="100%"
+      pos="fixed"
       h="6rem"
-      boxShadow="lg"
+      boxShadow="none"
       top="0"
       right="0"
       bgColor="#F3F8FF"
       zIndex="1"
+      className={navbarClasses}
     >
       <Flex
-        px={{ base: "4", md: "6.2rem", lg: "8rem", xl: "10rem" }}
+        px={{ base: "6", md: "6.2rem", lg: "8rem", xl: "10rem" }}
         justifyContent="space-between"
         alignItems="center"
         h="100%"
       >
-        <HStack w={{ base: "100%", md: "auto" }} spacing="2">
+        <HStack spacing="2">
           <Image w="45px" src={logo} />
           <Text
             fontSize="18px"
@@ -94,47 +114,60 @@ function Navbar() {
           </Text>
         </HStack>
 
-        <Box display={{ base: "block", md: "none" }}>
-          <Menu>
-            <MenuButton as={Box} px={4} py={2} transition="all 0.2s">
-              Menu
-            </MenuButton>
-            <MenuList>
-              <MenuItem>
+        <Drawer
+          isOpen={isDrawerOpen}
+          onClose={handleDrawerClose}
+          placement="right"
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerHeader display="flex" justifyContent="space-between">
+              <ChakraLink
+                as={RouterLink}
+                to="/facultyuserProfile"
+                _hover={{ textDecoration: "none", color: "black" }}
+                _focus={{ outline: "none" }}
+              >
+                <InitialsAvatar name={studentName} className="avatar-circle" />
+              </ChakraLink>
+              <DrawerCloseButton />
+            </DrawerHeader>
+            <DrawerBody>
+              {/* Navigation Links */}
+              <Flex flexDirection="column">
                 <NavLink
-                  to="/studentdashboard"
+                  to="/facultyHome"
                   activeClassName="active"
-                  className="nav-link"
+                  className="nav-link drawer"
+                  onClick={handleDrawerClose}
                 >
                   Home
                 </NavLink>
-              </MenuItem>
-              <MenuItem>
                 <NavLink
-                  to="/curriculum"
+                  to="/facultydashboard"
                   activeClassName="active"
-                  className="nav-link"
+                  className="nav-link drawer"
+                  onClick={handleDrawerClose}
                 >
                   Curriculum
                 </NavLink>
-              </MenuItem>
-              <MenuItem>
                 <NavLink
-                  to="/analysis"
+                  to="/facultyevaluation"
                   activeClassName="active"
-                  className="nav-link"
+                  className="nav-link drawer"
+                  onClick={handleDrawerClose}
                 >
                   Evaluation
                 </NavLink>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Box>
+              </Flex>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
 
         <Flex
           gap={34}
           mx="auto"
-          // ml={{ base: "0", md: "10rem", lg: "15rem", xl: "23rem" }}
+          ml="auto"
           display={{ base: "none", md: "flex" }}
         >
           <NavLink
@@ -156,11 +189,21 @@ function Navbar() {
           </NavLink>
         </Flex>
 
+        {/* Hamburger Menu Icon */}
+        <IconButton
+          aria-label="Open Menu"
+          icon={<HiMenu fontSize={28} />}
+          justifyContent="center"
+          onClick={handleDrawerOpen}
+          display={{ base: "flex", md: "none" }} // Show only on tablet and mobile
+        />
+
         <ChakraLink
           as={RouterLink}
           to="/userProfile"
           _hover={{ textDecoration: "none", color: "black" }}
           _focus={{ outline: "none" }}
+          display={{ base: "none", md: "block" }}
         >
           <InitialsAvatar name={studentName} className="avatar-circle" />
         </ChakraLink>
