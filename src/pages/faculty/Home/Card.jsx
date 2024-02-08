@@ -142,13 +142,13 @@ function Card() {
             <Text fontSize="25px" padding="0  2rem 0 " color="white">
               {totalStudents}
             </Text>
-            <Image
+            {/* <Image
               opacity={0.3}
               // mt="2rem"
               w="19rem"
               h="5.4rem"
               src={Vec}
-            />
+            /> */}
           </Box>
 
           {/* Totat Female */}
@@ -175,13 +175,13 @@ function Card() {
               {femaleStudents}
             </Text>
 
-            <Image
+            {/* <Image
               opacity={0.3}
               // mt="2rem"
               w="19rem"
               h="5.4rem"
               src={Vec}
-            />
+            /> */}
           </Box>
           {/* Total Male */}
           <Box
@@ -207,13 +207,13 @@ function Card() {
             <Text fontSize="25px" padding="0  2rem 0 " color="white">
               {maleStudents}
             </Text>
-            <Image
+            {/* <Image
               opacity={0.3}
               // mt="2rem"
               w="19rem"
               h="5.4rem"
               src={Vec}
-            />
+            /> */}
           </Box>
         </HStack>
 
