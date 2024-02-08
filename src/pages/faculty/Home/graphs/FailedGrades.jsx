@@ -155,7 +155,7 @@ function FailedGrades() {
   return (
     <Card mt="2rem" w="100%" h="auto" boxShadow="2xl" borderRadius="30px">
       <div ref={containerRef}>
-        <Flex justify="space-between" align="center" overflowX="scroll">
+        <Flex justify="space-between" align="center">
           <CardHeader>Student(s) that have Failing Grades</CardHeader>
           <HStack>
             <Select

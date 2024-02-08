@@ -146,7 +146,7 @@ function Evaluated() {
   return (
     <Card mt="2rem" w="100%" h="auto" boxShadow="2xl" borderRadius="30px">
       <div ref={containerRef}>
-        <Flex justify="space-between" align="center" overflow="scroll">
+        <Flex justify="space-between" align="center">
           <CardHeader>List of Evaluated Students</CardHeader>
           <HStack>
             <Select
