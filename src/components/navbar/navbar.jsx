@@ -94,7 +94,7 @@ function Navbar() {
       right="0"
       bgColor="#F3F8FF"
       zIndex="1"
-      className={navbarClasses}
+      // className={navbarClasses}
     >
       <Flex
         px={{ base: "6", md: "6.2rem", lg: "8rem", xl: "10rem" }}
