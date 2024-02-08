@@ -4,11 +4,11 @@ import {
   HStack,
   Image,
   Text,
-  Link as ChakraLink,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -77,12 +77,12 @@ function Navbar() {
       zIndex="1"
     >
       <Flex
-        px={{ base: "4", md: "14.2rem" }} // Responsive padding
+        px={{ base: "4", md: "6.2rem", lg: "8rem", xl: "10rem" }}
         justifyContent="space-between"
         alignItems="center"
         h="100%"
       >
-        <HStack>
+        <HStack w={{ base: "100%", md: "auto" }} spacing="2">
           <Image w="45px" src={logo} />
           <Text
             fontSize="18px"
@@ -133,7 +133,8 @@ function Navbar() {
 
         <Flex
           gap={34}
-          mr={{ base: "0", md: "30rem" }}
+          mx="auto"
+          // ml={{ base: "0", md: "10rem", lg: "15rem", xl: "23rem" }}
           display={{ base: "none", md: "flex" }}
         >
           <NavLink
