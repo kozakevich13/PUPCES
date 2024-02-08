@@ -5,7 +5,7 @@ export default function Footer() {
     <Flex
       position="absolute"
       bottom={0}
-      w="100%"
+      w="100vw"
       bg="gray.100" // Set the background color to gray
       minH="40px"
       justifyContent="center"
