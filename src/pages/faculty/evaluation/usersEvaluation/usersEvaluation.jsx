@@ -1520,7 +1520,7 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
           evalSemValue={evalSemValue}
         />
       ) : (
-        <Flex mt="5rem" overflow="hidden" flexDirection="column" w="90%">
+        <Flex mt="5rem" overflow="hidden" flexDirection="column" w="100%">
           <HStack
             w="90%"
             spacing={{ base: "1rem", sm: "2rem" }}
@@ -1533,7 +1533,7 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
               width={{ base: "8rem", md: "10rem", lg: "12rem" }}
               onClick={handleViewAnalytics}
               _hover={{ bg: "#FFD966", transition: "background-color 0.3s" }}
-              ml={{ base: "4rem", md: "12rem", lg: "15rem" }}
+              ml={{ base: "2rem", md: "12rem", lg: "15rem" }}
             >
               View Analytics
             </Button>
