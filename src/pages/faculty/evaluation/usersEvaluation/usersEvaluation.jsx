@@ -1512,7 +1512,7 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
   };
 
   return (
-    <div>
+    <Box w="90%">
       {showAnalytics ? (
         <StudentAnalytics
           studentNumber={studentNumber}
@@ -1520,56 +1520,78 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
           evalSemValue={evalSemValue}
         />
       ) : (
-        <Flex mt="5rem" overflow="visible" flexDirection="column" w="100%">
-          <HStack w="100%" justifyContent="space-between">
+        <Flex mt="5rem" overflow="hidden" flexDirection="column" w="90%">
+          <HStack
+            w="90%"
+            spacing={{ base: "1rem", sm: "2rem" }}
+            justifyContent={{ base: "center", sm: "flex-start" }}
+            flexWrap="wrap"
+            ml={{ base: "0rem", md: "3rem", lg: "2rem" }}
+          >
             <Button
               bg="#E3B04B"
-              width="12rem"
+              width={{ base: "8rem", md: "10rem", lg: "12rem" }}
               onClick={handleViewAnalytics}
               _hover={{ bg: "#FFD966", transition: "background-color 0.3s" }}
+              ml={{ base: "4rem", md: "12rem", lg: "15rem" }}
             >
               View Analytics
             </Button>
-            <Box>
-              <HStack>
-                <Select
-                  size="sm" // Adjust the size as needed
-                  color="gray.500"
-                  width="10rem"
-                  placeholder="Select Semester"
-                  w="15rem"
-                  value={selectedSemester}
-                  onChange={(event) => setSelectedSemester(event.target.value)}
+
+            <Box ml={{ base: "2rem", md: "6rem", lg: "12rem" }}>
+              <HStack spacing={4}>
+                <VStack
+                  align="start"
+                  spacing={2}
+                  w={{ base: "100%", md: "auto" }}
                 >
-                  <option value="First Semester">First Semester</option>
-                  <option value="Second Semester">Second Semester</option>
-                  <option value="Summer Semester">Summer Semester</option>
-                  <option value="Bridging">Bridging</option>
-                  <option value="All Semester">All Semester</option>
-                </Select>
-                <Select
-                  size="sm" // Adjust the size as needed
-                  color="gray.500"
-                  placeholder="Select Year"
-                  w="15rem"
-                  value={selectedYear}
-                  onChange={(event) => setSelectedYear(event.target.value)}
+                  <Select
+                    size="sm"
+                    color="gray.500"
+                    width={{ base: "8rem", md: "8rem", lg: "10rem" }}
+                    placeholder="Select Semester"
+                    value={selectedSemester}
+                    onChange={(event) =>
+                      setSelectedSemester(event.target.value)
+                    }
+                  >
+                    <option value="First Semester">First Semester</option>
+                    <option value="Second Semester">Second Semester</option>
+                    <option value="Summer Semester">Summer Semester</option>
+                    <option value="Bridging">Bridging</option>
+                    <option value="All Semester">All Semester</option>
+                  </Select>
+                </VStack>
+
+                <VStack
+                  align="start"
+                  spacing={2}
+                  w={{ base: "100%", md: "auto" }}
                 >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="All Years">All Years</option>
-                  <option value="Bridging">Briging Years</option>
-                </Select>
+                  <Select
+                    size="sm"
+                    width={{ base: "6rem", md: "8rem", lg: "10rem" }}
+                    color="gray.500"
+                    placeholder="Select Year"
+                    value={selectedYear}
+                    onChange={(event) => setSelectedYear(event.target.value)}
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="All Years">All Years</option>
+                    <option value="Bridging">Briging Years</option>
+                  </Select>
+                </VStack>
               </HStack>
             </Box>
           </HStack>
 
-          <Text mt="2rem" fontSize="19px" fontWeight="bold">
+          <Text mt="2rem" fontSize="19px" fontWeight="bold" textAlign="center">
             {programName}
           </Text>
-          <HStack mt="2rem">
+          <HStack mt="2rem" ml={{ base: "1rem", md: "3rem", lg: "5rem" }}>
             <HStack>
               <Text fontSize="17.5px" fontWeight="semibold">
                 {" "}
@@ -1588,7 +1610,11 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
             </HStack>
           </HStack>
 
-          <HStack mt="1rem" gap="23">
+          <HStack
+            mt="1rem"
+            gap="23"
+            ml={{ base: "1rem", md: "3rem", lg: "5rem" }}
+          >
             <Text fontSize="17.5px" fontWeight="semibold">
               Student Name:
             </Text>
@@ -1604,7 +1630,7 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
             </Text>
           </HStack>
 
-          <HStack mt="1rem" justifyContent="space-between">
+          <HStack mt="1rem" ml={{ base: "1rem", md: "3rem", lg: "5rem" }}>
             <HStack>
               <Text fontSize="17.5px" fontWeight="semibold">
                 Total Credit Units Required{" "}
@@ -1612,9 +1638,12 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
 
               <Text>{totalCreditUnits} Units</Text>
             </HStack>
-            <VStack>
+            <VStack ml={{ base: "5%", md: "10%", lg: "20%" }}>
               <HStack>
-                <Text fontSize="17.5px" fontWeight="semibold">
+                <Text
+                  fontSize={{ base: "15px", md: "17.5px" }}
+                  fontWeight="semibold"
+                >
                   Total Units Recommended:
                 </Text>
                 <Text>
@@ -1626,11 +1655,14 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
               </HStack>
             </VStack>
           </HStack>
-          <HStack mt="1rem" ml="42rem">
+          <HStack
+            mt={{ base: "1rem", md: "2rem" }}
+            ml={{ base: "0rem", md: "40%", lg: "50%" }}
+          >
             <Button
               bg="#740202"
               color="white"
-              width="12rem"
+              width={{ base: "100%", md: "12rem" }}
               onClick={() => setAllowOverload(!allowOverload)}
               _hover={{ bg: "#A93226", transition: "background-color 0.3s" }}
             >
@@ -1639,8 +1671,8 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
             <Button
               bg="#740202"
               color="white"
-              fontSize="15px"
-              width="12rem"
+              fontSize={{ base: "12px", md: "15px" }}
+              width={{ base: "100%", md: "12rem" }}
               onClick={() => {
                 setAllowRecommendAgain(!allowRecommendAgain);
                 console.log(
@@ -1694,37 +1726,59 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
 
                 return (
                   <div key={key}>
-                    <VStack mt="3rem" spacing="1" align="flex-start">
-                      <HStack>
-                        <Text fontSize="17.5px" fontWeight="semibold">
+                    <VStack
+                      mt={{ base: "2rem", md: "3rem", lg: "4rem" }}
+                      spacing="1"
+                      align="flex-start"
+                      w="80vw"
+                      ml={{ base: "2rem", md: "2rem", lg: "2rem" }}
+                    >
+                      <HStack ml={{ base: "0rem", md: "2rem", lg: "3rem" }}>
+                        <Text
+                          fontSize={{ base: "15px", md: "17.5px" }}
+                          fontWeight="semibold"
+                        >
                           Year Level:
                         </Text>
-                        <Text w="10rem" fontWeight="md" fontSize="17.5px">
+                        <Text
+                          fontWeight="md"
+                          fontSize={{ base: "15px", md: "17.5px" }}
+                        >
                           {`${getYearText(parseInt(courseYear))} Year `}
                         </Text>
                       </HStack>
 
-                      <HStack spacing="31rem" justifyContent="space-between">
-                        <HStack>
-                          <Text fontSize="17.5px" fontWeight="semibold">
-                            Semester:
-                          </Text>
-                          <Text w="20rem" fontWeight="md" fontSize="17.5px">
-                            {selectedSemester === "Bridging"
-                              ? "Bridging"
-                              : `${capitalizeWords(courseSem)} Semester`}
-                          </Text>
-                        </HStack>
-                        <HStack>
-                          <Text fontSize="17.5px" fontWeight="semibold">
-                            School Year:
-                          </Text>
-                          <Text>{schoolYear}</Text>
-                        </HStack>
+                      <HStack ml={{ base: "0rem", md: "2rem", lg: "3rem" }}>
+                        <Text
+                          fontSize={{ base: "15px", md: "17.5px" }}
+                          fontWeight="semibold"
+                        >
+                          Semester:
+                        </Text>
+                        <Text
+                          fontWeight="md"
+                          fontSize={{ base: "15px", md: "17.5px" }}
+                        >
+                          {selectedSemester === "Bridging"
+                            ? "Bridging"
+                            : `${capitalizeWords(courseSem)} Semester`}
+                        </Text>
                       </HStack>
+                      <HStack ml={{ base: "0rem", md: "2rem", lg: "3rem" }}>
+                        <Text
+                          fontSize={{ base: "15px", md: "17.5px" }}
+                          fontWeight="semibold"
+                        >
+                          School Year:
+                        </Text>
+                        <Text fontSize={{ base: "15px", md: "17.5px" }}>
+                          {schoolYear}
+                        </Text>
+                      </HStack>
+
                       <Button
                         onClick={() => setShowCheckboxes(!showCheckboxes)}
-                        ml="57rem"
+                        ml={{ base: "0rem", md: "2rem", lg: "3rem" }}
                         bg="#740202"
                         color="white"
                         justifyContent="flex-end"
@@ -1736,189 +1790,196 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
                         Recommend {showCheckboxes ? "All" : "Few"}
                       </Button>
                     </VStack>
-
-                    <TableContainer overflowX="auto" w="100%" mt="1rem">
-                      <Table
-                        variant="simple"
-                        fontFamily="inter"
-                        size="sm"
-                        style={{ minWidth: "800px" }}
-                      >
-                        <Thead bg="palette.primary" h="5rem">
-                          <Tr>
-                            {showCheckboxes && <Th></Th>}
-                            <Th
-                              style={{ textAlign: "center" }}
-                              color="palette.secondary"
-                            >
-                              Course Code
-                            </Th>
-                            <Th
-                              style={{ textAlign: "center" }}
-                              color="palette.secondary"
-                            >
-                              Course Title
-                            </Th>
-                            <Th w="1rem" color="palette.secondary">
-                              Pre-Requisite(s)
-                            </Th>
-                            <Th
-                              style={{ textAlign: "center" }}
-                              color="palette.secondary"
-                            >
-                              <div>Lecture</div>
-                              <div>Hours</div>
-                            </Th>
-                            <Th
-                              style={{ textAlign: "center" }}
-                              color="palette.secondary"
-                            >
-                              <div>Lab</div>
-                              <div>Hours</div>
-                            </Th>
-                            <Th
-                              style={{ textAlign: "center" }}
-                              color="palette.secondary"
-                            >
-                              <div>Course</div>
-                              <div>Credit</div>
-                            </Th>
-                            <Th
-                              style={{ textAlign: "center" }}
-                              color="palette.secondary"
-                            >
-                              Date
-                            </Th>
-                            <Th></Th>
-                          </Tr>
-                        </Thead>
-                        <Tbody>
-                          {filteredCourseItems.map((courseItem) => {
-                            totalLectureHours += courseItem.num_lecture;
-                            totalLabHours += courseItem.num_lab;
-                            totalCourseCredits += courseItem.credit_unit;
-                            displayedCourseCodes.push(courseItem.course_code);
-                            return (
-                              <Tr key={courseItem.course_code}>
-                                {showCheckboxes && (
-                                  <Td>
-                                    <Checkbox
-                                      size="md"
-                                      colorScheme="green"
-                                      isChecked={selectedCourses[
-                                        currentSemester
-                                      ]?.includes(courseItem.course_code)}
-                                      onChange={(e) =>
-                                        handleCheckboxChange(
-                                          e,
-                                          courseItem.course_code
-                                        )
-                                      }
-                                    ></Checkbox>
-                                  </Td>
-                                )}
-                                <Td>{courseItem.course_code}</Td>
-                                <Td
-                                  className="course-title-cell"
-                                  fontSize="14px"
-                                  fontStyle="bitter"
-                                >
-                                  {courseItem.course_title}
-                                </Td>
-                                <Td
-                                  fontSize="14px"
-                                  fontStyle="bitter"
-                                  style={{
-                                    textAlign: "center",
-                                    lineHeight: "1.4",
-                                  }}
-                                >
-                                  {renderPrerequisites(
-                                    courseItem.pre_requisite
-                                  )}
-                                </Td>
-                                <Td
-                                  fontSize="14px"
-                                  fontStyle="bitter"
+                    <Flex w="90vw" overflow="visible">
+                      <VStack w="95%">
+                        <TableContainer w="90%" mt="1rem">
+                          <Table
+                            variant="simple"
+                            fontFamily="inter"
+                            size="sm"
+                            overflowX="auto"
+                          >
+                            <Thead bg="palette.primary" h="5rem">
+                              <Tr>
+                                {showCheckboxes && <Th></Th>}
+                                <Th
                                   style={{ textAlign: "center" }}
+                                  color="palette.secondary"
                                 >
-                                  {courseItem.num_lecture}
-                                </Td>
-                                <Td
-                                  fontSize="14px"
-                                  fontStyle="bitter"
+                                  Course Code
+                                </Th>
+                                <Th
                                   style={{ textAlign: "center" }}
+                                  color="palette.secondary"
                                 >
-                                  {courseItem.num_lab}
-                                </Td>
-                                <Td
-                                  fontSize="14px"
-                                  fontStyle="bitter"
+                                  Course Title
+                                </Th>
+                                <Th color="palette.secondary">
+                                  Pre-Requisite(s)
+                                </Th>
+                                <Th
                                   style={{ textAlign: "center" }}
+                                  color="palette.secondary"
                                 >
-                                  {courseItem.credit_unit}
-                                </Td>
-                                <Td
-                                  fontSize="14px"
-                                  fontStyle="bitter"
+                                  <div>Lecture</div>
+                                  <div>Hours</div>
+                                </Th>
+                                <Th
                                   style={{ textAlign: "center" }}
+                                  color="palette.secondary"
                                 >
-                                  {recommendedDates[courseItem.course_code]
-                                    ? new Date(
-                                        recommendedDates[courseItem.course_code]
-                                      ).toLocaleDateString()
-                                    : ""}
-                                </Td>
-                                <Td></Td>
+                                  <div>Lab</div>
+                                  <div>Hours</div>
+                                </Th>
+                                <Th
+                                  style={{ textAlign: "center" }}
+                                  color="palette.secondary"
+                                >
+                                  <div>Course</div>
+                                  <div>Credit</div>
+                                </Th>
+                                <Th
+                                  style={{ textAlign: "center" }}
+                                  color="palette.secondary"
+                                >
+                                  Date
+                                </Th>
+                                <Th></Th>
                               </Tr>
-                            );
-                          })}
-                        </Tbody>
+                            </Thead>
+                            <Tbody>
+                              {filteredCourseItems.map((courseItem) => {
+                                totalLectureHours += courseItem.num_lecture;
+                                totalLabHours += courseItem.num_lab;
+                                totalCourseCredits += courseItem.credit_unit;
+                                displayedCourseCodes.push(
+                                  courseItem.course_code
+                                );
+                                return (
+                                  <Tr key={courseItem.course_code}>
+                                    {showCheckboxes && (
+                                      <Td>
+                                        <Checkbox
+                                          size="md"
+                                          colorScheme="green"
+                                          isChecked={selectedCourses[
+                                            currentSemester
+                                          ]?.includes(courseItem.course_code)}
+                                          onChange={(e) =>
+                                            handleCheckboxChange(
+                                              e,
+                                              courseItem.course_code
+                                            )
+                                          }
+                                        ></Checkbox>
+                                      </Td>
+                                    )}
+                                    <Td>{courseItem.course_code}</Td>
+                                    <Td
+                                      className="course-title-cell"
+                                      fontSize="14px"
+                                      fontStyle="bitter"
+                                    >
+                                      {courseItem.course_title}
+                                    </Td>
+                                    <Td
+                                      fontSize="14px"
+                                      fontStyle="bitter"
+                                      style={{
+                                        textAlign: "center",
+                                        lineHeight: "1.4",
+                                      }}
+                                    >
+                                      {renderPrerequisites(
+                                        courseItem.pre_requisite
+                                      )}
+                                    </Td>
+                                    <Td
+                                      fontSize="14px"
+                                      fontStyle="bitter"
+                                      style={{ textAlign: "center" }}
+                                    >
+                                      {courseItem.num_lecture}
+                                    </Td>
+                                    <Td
+                                      fontSize="14px"
+                                      fontStyle="bitter"
+                                      style={{ textAlign: "center" }}
+                                    >
+                                      {courseItem.num_lab}
+                                    </Td>
+                                    <Td
+                                      fontSize="14px"
+                                      fontStyle="bitter"
+                                      style={{ textAlign: "center" }}
+                                    >
+                                      {courseItem.credit_unit}
+                                    </Td>
+                                    <Td
+                                      fontSize="14px"
+                                      fontStyle="bitter"
+                                      style={{ textAlign: "center" }}
+                                    >
+                                      {recommendedDates[courseItem.course_code]
+                                        ? new Date(
+                                            recommendedDates[
+                                              courseItem.course_code
+                                            ]
+                                          ).toLocaleDateString()
+                                        : ""}
+                                    </Td>
+                                    <Td></Td>
+                                  </Tr>
+                                );
+                              })}
+                            </Tbody>
 
-                        <Tfoot
-                          h="2.5rem"
-                          bgColor="#F0EEED"
-                          colSpan="9"
-                          textAlign="center"
-                        >
-                          <Tr>
-                            {showCheckboxes && <Th></Th>}
-                            <Th></Th>
-                            <Th
-                              fontSize="13px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
+                            <Tfoot
+                              h="2.5rem"
+                              bgColor="#F0EEED"
+                              colSpan="9"
+                              textAlign="center"
                             >
-                              Total
-                            </Th>
-                            <Th></Th>
-                            <Th
-                              fontSize="13px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
-                            >
-                              {totalLectureHours}
-                            </Th>
-                            <Th
-                              fontSize="13px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
-                            >
-                              {totalLabHours}
-                            </Th>
-                            <Th
-                              fontSize="13px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
-                            >
-                              {totalCourseCredits}
-                            </Th>
-                            <Th></Th>
-                            <Th></Th>
-                          </Tr>
-                        </Tfoot>
-                      </Table>
-                    </TableContainer>
+                              <Tr>
+                                {showCheckboxes && <Th></Th>}
+                                <Th></Th>
+                                <Th
+                                  fontSize="13px"
+                                  fontStyle="bitter"
+                                  style={{ textAlign: "center" }}
+                                >
+                                  Total
+                                </Th>
+                                <Th></Th>
+                                <Th
+                                  fontSize="13px"
+                                  fontStyle="bitter"
+                                  style={{ textAlign: "center" }}
+                                >
+                                  {totalLectureHours}
+                                </Th>
+                                <Th
+                                  fontSize="13px"
+                                  fontStyle="bitter"
+                                  style={{ textAlign: "center" }}
+                                >
+                                  {totalLabHours}
+                                </Th>
+                                <Th
+                                  fontSize="13px"
+                                  fontStyle="bitter"
+                                  style={{ textAlign: "center" }}
+                                >
+                                  {totalCourseCredits}
+                                </Th>
+                                <Th></Th>
+                                <Th></Th>
+                              </Tr>
+                            </Tfoot>
+                          </Table>
+                        </TableContainer>
+                      </VStack>
+                    </Flex>
                   </div>
                 );
               }
@@ -1934,6 +1995,7 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
                 bg="#740202"
                 color="white"
                 textAlign="center"
+                w="90%"
                 onClick={() => {
                   if (showCheckboxes) {
                     // If checkboxes are visible, recommend only selected courses
@@ -1946,7 +2008,7 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
                     handleRecommendAll();
                   }
                 }}
-                ml="57rem"
+                ml={{ base: "2rem", md: "3rem", lg: "5rem" }}
                 _hover={{ bg: "#A93226", transition: "background-color 0.3s" }}
               >
                 Recommend {showCheckboxes ? "Selected" : "All"}
@@ -1967,7 +2029,7 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
         filterCourses={filterCourses}
         studentNumber={studentNumber}
       /> */}
-    </div>
+    </Box>
   );
 }
 

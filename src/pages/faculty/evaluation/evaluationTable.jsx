@@ -103,10 +103,15 @@ function EvaluationTable({ students, isLoading, showTableBody }) {
   }, [students]);
 
   return (
-    <Flex w="100%" overflow="visible">
+    <Flex w="90vw" overflow="visible">
       <VStack w="100%">
         <TableContainer w="100%" marginTop="2rem">
-          <Table variant="simple" fontFamily="bitter" size="sm">
+          <Table
+            variant="simple"
+            fontFamily="bitter"
+            size="sm"
+            overflowX="auto"
+          >
             <Thead bg="palette.primary" marginBottom="5rem" h="3rem">
               <Tr>
                 <Th color="palette.secondary">Student Number</Th>

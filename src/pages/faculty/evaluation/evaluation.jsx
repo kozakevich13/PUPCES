@@ -239,7 +239,7 @@ export default function Evaluation() {
     >
       <FacultyNavbar />
       <VStack mt="12rem" w="100%">
-        <Wrap spacing="3" w={breakPoints} mb="8rem">
+        <Wrap spacing="3" w="90%" mb="8rem">
           <HStack justify="flex-start" w="100%" flexWrap="wrap">
             <Select
               placeholder="Year Level"
