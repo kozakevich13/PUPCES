@@ -6,6 +6,7 @@ import {
   Text,
   VStack,
   Wrap,
+  Stack,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -415,7 +416,15 @@ export default function StudentDashboard() {
         <Navbar />
       </Box>
 
-      <Wrap justifyContent="center" alignContent="center" flex="30" mt="10rem">
+      <Wrap
+        display="flex"
+        justifyContent="center"
+        alignContent="center"
+        alignItems="center"
+        flex="30"
+        mt="10rem"
+        w="100%"
+      >
         <HStack
           justifyContent="center"
           spacing={{ base: "1rem", md: "3rem", lg: "5rem" }}
@@ -429,13 +438,13 @@ export default function StudentDashboard() {
               textAlign="center"
               ml={{ base: "0", md: "7rem" }}
             >
-              {/* {student.program_id === 1
+              {student.program_id === 1
                 ? "Bachelor of Science in Information Technology"
                 : student.program_id === 2
                 ? "Diploma in Information Technology"
                 : student.program_id === 3
                 ? "Bachelor of Science in Office Administration"
-                : ""} */}
+                : ""}
               {programName}
             </Text>
             <HStack>
@@ -472,11 +481,12 @@ export default function StudentDashboard() {
           </HStack>
         </HStack>
 
-        <Flex ml="15rem" mt="5rem" justifyContent="flex-start">
-          <VStack>
-            <Box padding="5rem 5rem" boxShadow="lg">
+        <Flex w="95%" justifyContent="center" mt="5rem" margin="auto">
+          <VStack w="100%">
+            <Box padding="6rem 3rem" position="relative" boxShadow="lg" w="90%">
               <Box
                 bg="#740202"
+                position="absolute"
                 top="0"
                 left="0"
                 right="0"
@@ -486,8 +496,12 @@ export default function StudentDashboard() {
               >
                 Credit Units
               </Box>
-              <HStack spacing="3rem">
-                <Box zIndex="0">
+              <Stack
+                direction={{ base: "column", md: "row" }}
+                spacing={{ base: "1rem", md: "2rem", lg: "3rem" }}
+                w="100%"
+              >
+                <Box display="flex" justifyContent="center" alignItems="center">
                   {
                     <CreditUnits
                       studentNumber={studentNumber}
@@ -506,16 +520,17 @@ export default function StudentDashboard() {
                   alignItems="center"
                   // boxShadow="md"
                   // bg="gray.100"
-                  w="25rem"
+                  w="100%"
                   mt=""
+                  h={{ base: "10rem", md: "10rem", lg: "15rem" }}
                 >
                   <VStack>
                     <Text
                       textAlign="center"
                       fontWeight="semibold"
-                      fontSize="lg"
+                      fontSize={{ base: "sm", md: "md", lg: "lg" }}
                       mb="4"
-                      padding="1rem"
+                      padding={{ base: "0rem", md: "1rem", lg: "2rem" }}
                     >
                       You have {totalCreditUnits} credit units and taken{" "}
                       {validatedTotalUnits} credit unit(s) and have{" "}
@@ -525,9 +540,9 @@ export default function StudentDashboard() {
                     <Text
                       textAlign="center"
                       fontWeight="semibold"
-                      fontSize="lg"
+                      fontSize={{ base: "sm", md: "md", lg: "lg" }}
                       mb="4"
-                      padding="2rem"
+                      padding={{ base: "0rem", md: "1rem", lg: "2rem" }}
                     >
                       You have {Math.ceil(remainingCreditUnits / 23)} remaining
                       semester(s) including the current semester for{"  "}
@@ -537,9 +552,10 @@ export default function StudentDashboard() {
                     </Text>
                   </VStack>
                 </Box>
-              </HStack>
+              </Stack>
             </Box>
-            <Box padding="5rem 2rem 0 2rem" boxShadow="lg">
+
+            <Box padding="5rem 2rem 2rem 2rem" boxShadow="lg">
               <Box
                 bg="#740202"
                 top="0"
@@ -555,7 +571,7 @@ export default function StudentDashboard() {
               <GradesAverageLine studentNumber={studentNumber} />
             </Box>
 
-            <Box padding="5rem 2rem 0 2rem" boxShadow="lg">
+            <Box padding="5rem 2rem 2rem 2rem" boxShadow="lg">
               <Box
                 bg="#740202"
                 top="0"
@@ -568,7 +584,7 @@ export default function StudentDashboard() {
                 Average Grades per Semester
               </Box>
               <VStack spacing="3rem">
-                <Box w="62rem" h="20rem">
+                <Box h={{ base: "0rem", md: "10rem", lg: "20rem" }}>
                   {
                     <GradesperSemester
                       studentNumber={studentNumber}
@@ -577,7 +593,7 @@ export default function StudentDashboard() {
                   }
                 </Box>
                 <Spacer />
-                <Box alignItems="center" w="50rem" h="6rem" padding="1rem">
+                <Box alignItems="center" h="6rem" padding="1rem">
                   {latestGradeInfo ? (
                     <>
                       <Text fontSize="15px" fontWeight="semibold">
@@ -611,7 +627,7 @@ export default function StudentDashboard() {
               </VStack>
             </Box>
 
-            <Box w="65rem" padding="2rem 2rem 2rem 2rem" boxShadow="lg">
+            <Box padding="2rem 1rem 2rem 1rem" boxShadow="lg">
               <VStack spacing="5rem">
                 <Box
                   bg="#740202"
@@ -626,25 +642,25 @@ export default function StudentDashboard() {
                   Courses
                 </Box>
 
-                <VStack padding="4rem">
+                <VStack padding="2rem">
                   <Text>{graduationMessage}</Text>
                   <Overstay studentNumber={studentNumber} />
                 </VStack>
               </VStack>
             </Box>
 
-            <Box w="65rem" padding="2rem 2rem 2rem 2rem" zIndex={0}>
-              <Box mr="5rem" w="50rem">
+            <Box padding="2rem 1rem 2rem 1rem" zIndex={0}>
+              <Box mr={{ base: "0rem", md: "0rem", lg: "5rem" }}>
                 <Major />
               </Box>
             </Box>
-            <Box w="65rem" padding="2rem 2rem 2rem 2rem">
-              <Box mr="5rem" w="50rem">
+            <Box padding="2rem 1rem 2rem 1rem">
+              <Box mr={{ base: "0rem", md: "0rem", lg: "5rem" }}>
                 <Core />
               </Box>
             </Box>
-            <Box w="65rem" padding="2rem 2rem 2rem 2rem">
-              <Box mr="5rem" w="50rem">
+            <Box padding="2rem 1rem 2rem 1rem">
+              <Box mr={{ base: "0rem", md: "0rem", lg: "5rem" }}>
                 <Gen />
               </Box>
             </Box>

@@ -495,7 +495,7 @@ export default function GradesperSemester({
 
   return (
     <VStack>
-      <Box w={{ base: "280px", md: "400px", lg: "800px" }} id="chart2"></Box>;
+      <Box w={{ base: "300px", md: "400px", lg: "800px" }} id="chart2"></Box>;
     </VStack>
   );
 }

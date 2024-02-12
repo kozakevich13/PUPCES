@@ -208,6 +208,7 @@ export default function CreditUnits({
       height={{ base: "200px", md: "300px", lg: "400px" }}
     >
       <canvas
+        width="200px"
         id="myPieChart"
         // height="100%"
       ></canvas>

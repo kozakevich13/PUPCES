@@ -20,7 +20,7 @@ import {
   VStack,
   Wrap,
   useToast,
-  Box
+  Box,
 } from "@chakra-ui/react";
 import axios from "axios";
 import html2pdf from "html2pdf.js";
@@ -81,37 +81,35 @@ function Curriculum() {
     remakrs: "",
   });
 
-    const containerRef = useRef(null);
+  const containerRef = useRef(null);
 
-    const handleDownloadPDF = () => {
-      const element = containerRef.current;
-      const table = element.querySelector("table");
-      console.log("Container reference:", element);
-      console.log("HTML content before conversion:", element.innerHTML);
+  const handleDownloadPDF = () => {
+    const element = containerRef.current;
+    const table = element.querySelector("table");
+    console.log("Container reference:", element);
+    console.log("HTML content before conversion:", element.innerHTML);
 
-      // Set a specific width for the table
+    // Set a specific width for the table
+    if (table) {
+      table.style.width = "100%";
+    }
+
+    html2pdf(element, {
+      margin: 10,
+      filename: "Curriculum.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: {
+        unit: "mm",
+        format: "legal",
+        orientation: "landscape",
+      },
+    }).then(() => {
       if (table) {
-        table.style.width = "100%";
+        table.style.width = ""; // Reset to default width
       }
-
-      html2pdf(element, {
-        margin: 10,
-        filename: "Curriculum.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: {
-          unit: "mm",
-          format: "legal",
-          orientation: "landscape",
-        },
-      }).then(() => {
-        if (table) {
-          table.style.width = ""; // Reset to default width
-        }
-      });
-    };
-
-    
+    });
+  };
 
   //fetch student
   useEffect(() => {

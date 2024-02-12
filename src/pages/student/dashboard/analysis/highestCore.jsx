@@ -246,10 +246,16 @@ function Core() {
   };
 
   return (
-    <Card display="flex" w="55rem" h="auto" boxShadow="2xl" borderRadius="30px">
+    <Card
+      display="flex"
+      w={{ base: "20rem", md: "35rem", lg: "55rem" }}
+      h="auto"
+      boxShadow="2xl"
+      borderRadius="30px"
+    >
       <Flex justify="space-between" align="center">
         <CardHeader>Highest Grades in Core Subject(s)</CardHeader>
-        <HStack>
+        <HStack flexDir={{ base: "column", md: "column", lg: "row" }}>
           {/* <Select
             value={selectedAcademicYear}
             onChange={(e) => setSelectedAcademicYear(e.target.value)}
@@ -302,7 +308,7 @@ function Core() {
             <option value="All Semesters">All Semester</option>
           </Select>
           <Button
-            mr="4rem"
+            mr={{ base: "0rem", md: "0rem", lg: "4rem" }}
             colorScheme="teal"
             style={{
               color: "white",
@@ -323,7 +329,10 @@ function Core() {
         </HStack>
       </Flex>
       <Divider bg="gray.300" />
-      <CardBody ml="2rem" justifyContent="center">
+      <CardBody
+        ml={{ base: "0rem", md: "0rem", lg: "2rem" }}
+        justifyContent="center"
+      >
         <TableContainer>
           <Table>
             <Thead bg="palette.primary" h="2rem">
