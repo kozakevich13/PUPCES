@@ -328,7 +328,6 @@ export default function FacultyDashboard() {
     }
   };
 
-
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -564,6 +563,7 @@ export default function FacultyDashboard() {
           showTableBody={showTableBody}
           toggleUsersData={handleToggleUsersData}
         />
+
         <Flex mt="5rem">
           {isUsersDataVisible &&
             (console.log(

@@ -1423,7 +1423,7 @@ function UsersData({ studentNumber, facultyId, program, strand }) {
     fetchProgramData();
   }, [program]);
   return (
-    <Flex flexDirection="column" w="100%">
+    <Flex flexDirection="column" w="95wv">
       <Text fontSize="19px" fontWeight="bold">
         {programName}
       </Text>
@@ -1491,361 +1491,379 @@ function UsersData({ studentNumber, facultyId, program, strand }) {
 
           if (hasCourses) {
             return (
-              <div key={key}>
-                <VStack mt="2rem" spacing="1" align="flex-start">
-                  <HStack>
-                    <Text fontSize="17.5px" fontWeight="semibold">
-                      Year Level:
-                    </Text>
-                    <Text w="10rem" fontWeight="md" fontSize="17.5px">
-                      {`${courseYear} Year `}
-                    </Text>
-                  </HStack>
-
-                  <HStack spacing="28rem" justifyContent="space-between">
-                    <HStack>
-                      <Text fontSize="17.5px" fontWeight="semibold">
-                        Semester:
-                      </Text>
-                      <Text w="20rem" fontWeight="md" fontSize="17.5px">
-                        {`${capitalizeWords(courseSemester)} Semester `}
-                      </Text>
-                    </HStack>
-                    <HStack>
-                      <Text fontSize="17.5px" fontWeight="semibold">
-                        School Year:
-                      </Text>
-                      <Text>{schoolYear}</Text>
-                    </HStack>
-                  </HStack>
-                </VStack>
-
-                <TableContainer overflowX="auto" w="100%" mt="1rem">
-                  <Table
-                    variant="simple"
-                    fontFamily="inter"
-                    size="sm"
-                    style={{ minWidth: "800px" }}
+              <Flex w="82vw" overflow="visible" key={key}>
+                <VStack w="100%">
+                  <VStack
+                    mt="2rem"
+                    spacing={{ base: 0, md: 4 }}
+                    align="flex-start"
+                    w="100%"
+                    pl="1rem"
                   >
-                    <Thead bg="palette.primary" h="5rem">
-                      <Tr>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          Course Code
-                        </Th>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          Course Title
-                        </Th>
-                        <Th w="1rem" color="palette.secondary">
-                          Pre-Requisite(s)
-                        </Th>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          <div>Lecture</div>
-                          <div>Hours</div>
-                        </Th>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          <div>Lab</div>
-                          <div>Hours</div>
-                        </Th>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          <div>Course</div>
-                          <div>Credit</div>
-                        </Th>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          Grades
-                        </Th>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          Remarks
-                        </Th>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          Date
-                        </Th>
-                        <Th
-                          style={{ textAlign: "center" }}
-                          color="palette.secondary"
-                        >
-                          Action
-                        </Th>
-                      </Tr>
-                    </Thead>
-                    <Tbody>
-                      {filteredCourseItems.map((courseItem) => {
-                        const gradesAndRemark = gradesAndRemarks.find(
-                          (item) => item.course_code === courseItem.course_code
-                        );
+                    <HStack flexWrap="wrap">
+                      <Text fontSize="17.5px" fontWeight="semibold">
+                        Year Level:
+                      </Text>
+                      <Text w="10rem" fontWeight="md" fontSize="17.5px">
+                        {`${courseYear} Year `}
+                      </Text>
+                    </HStack>
 
-                        const validationEntry = validationData.find(
-                          (entry) => entry.course_id === courseItem.course_id
-                        );
+                    <HStack
+                      // spacing={{ base: "0rem", md: "0rem", lg: "15rem" }}
+                      flexWrap="wrap"
+                      justifyContent={{
+                        base: "flex-start",
+                        md: "flex-start",
+                      }}
+                    >
+                      <HStack>
+                        <Text fontSize="17.5px" fontWeight="semibold">
+                          Semester:
+                        </Text>
+                        <Text w="10rem" fontWeight="md" fontSize="17.5px">
+                          {`${capitalizeWords(courseSemester)} Semester `}
+                        </Text>
+                      </HStack>
+                      <HStack>
+                        <Text fontSize="17.5px" fontWeight="semibold">
+                          School Year:
+                        </Text>
+                        <Text>{schoolYear}</Text>
+                      </HStack>
+                    </HStack>
+                  </VStack>
 
-                        const isCourseValidated =
-                          validationEntry && validationEntry.date_validated;
+                  <TableContainer overflowX="auto" w="100%" mt="1rem">
+                    <Table
+                      variant="simple"
+                      fontFamily="inter"
+                      size="sm"
+                      // style={{ minWidth: "800px" }}
+                    >
+                      <Thead bg="palette.primary" h="5rem">
+                        <Tr>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            Course Code
+                          </Th>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            Course Title
+                          </Th>
+                          <Th w="1rem" color="palette.secondary">
+                            Pre-Requisite(s)
+                          </Th>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            <div>Lecture</div>
+                            <div>Hours</div>
+                          </Th>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            <div>Lab</div>
+                            <div>Hours</div>
+                          </Th>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            <div>Course</div>
+                            <div>Credit</div>
+                          </Th>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            Grades
+                          </Th>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            Remarks
+                          </Th>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            Date
+                          </Th>
+                          <Th
+                            style={{ textAlign: "center" }}
+                            color="palette.secondary"
+                          >
+                            Action
+                          </Th>
+                        </Tr>
+                      </Thead>
+                      <Tbody>
+                        {filteredCourseItems.map((courseItem) => {
+                          const gradesAndRemark = gradesAndRemarks.find(
+                            (item) =>
+                              item.course_code === courseItem.course_code
+                          );
 
-                        const formattedDate = isCourseValidated
-                          ? formatValidatedDate(validationEntry.date_validated)
-                          : "";
+                          const validationEntry = validationData.find(
+                            (entry) => entry.course_id === courseItem.course_id
+                          );
 
-                        const hasDate =
-                          validationEntry && validationEntry.date_validated;
+                          const isCourseValidated =
+                            validationEntry && validationEntry.date_validated;
 
-                        totalLectureHours += courseItem.num_lecture;
-                        totalLabHours += courseItem.num_lab;
-                        totalCourseCredits += courseItem.credit_unit;
+                          const formattedDate = isCourseValidated
+                            ? formatValidatedDate(
+                                validationEntry.date_validated
+                              )
+                            : "";
 
-                        return (
-                          <Tr key={courseItem.course_code}>
-                            <Td>{courseItem.course_code}</Td>
-                            <Td
-                              className="course-title-cell"
-                              fontSize="14px"
-                              fontStyle="bitter"
-                            >
-                              {courseItem.course_title}
-                            </Td>
-                            <Td
-                              fontSize="14px"
-                              fontStyle="bitter"
-                              style={{
-                                textAlign: "center",
-                                lineHeight: "1.4",
-                              }}
-                            >
-                              {renderPrerequisites(courseItem.pre_requisite)}
-                            </Td>
-                            <Td
-                              fontSize="14px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
-                            >
-                              {courseItem.num_lecture}
-                            </Td>
-                            <Td
-                              fontSize="14px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
-                            >
-                              {courseItem.num_lab}
-                            </Td>
-                            <Td
-                              fontSize="14px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
-                            >
-                              {courseItem.credit_unit}
-                            </Td>
-                            <Td
-                              fontSize="14px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
-                            >
-                              {gradesAndRemark
-                                ? gradesAndRemark.grades === 0
-                                  ? "Withdraw"
-                                  : gradesAndRemark.grades === -1
-                                  ? "Incomplete"
-                                  : typeof gradesAndRemark.grades === "number"
-                                  ? gradesAndRemark.grades.toFixed(2)
-                                  : ""
-                                : ""}
-                            </Td>
-                            <Td
-                              fontSize="14px"
-                              fontStyle="bitter"
-                              style={{ textAlign: "center" }}
-                            >
-                              {gradesAndRemark
-                                ? gradesAndRemark.grades === 0
-                                  ? "Withdraw"
-                                  : gradesAndRemark.grades === -1
-                                  ? "Incomplete"
-                                  : gradesAndRemark.remarks
-                                : ""}
-                            </Td>
+                          const hasDate =
+                            validationEntry && validationEntry.date_validated;
 
-                            <Td>
-                              {console.log(
-                                "Course Code:",
-                                courseItem.course_code
-                              )}
-                              {console.log("Formatted Date:", formattedDate)}
-                              {hasDate ? formattedDate : ""}
-                            </Td>
+                          totalLectureHours += courseItem.num_lecture;
+                          totalLabHours += courseItem.num_lab;
+                          totalCourseCredits += courseItem.credit_unit;
 
-                            <Td>
-                              {/* {console.log("hasDate:", hasDate)} */}
-                              {hasDate ? (
-                                <Button disabled>Edit</Button>
-                              ) : (
-                                <>
-                                  <Button
-                                    onClick={() => {
-                                      if (
-                                        canEditCourse(
+                          return (
+                            <Tr key={courseItem.course_code}>
+                              <Td>{courseItem.course_code}</Td>
+                              <Td
+                                className="course-title-cell"
+                                fontSize="14px"
+                                fontStyle="bitter"
+                              >
+                                {courseItem.course_title}
+                              </Td>
+                              <Td
+                                fontSize="14px"
+                                fontStyle="bitter"
+                                style={{
+                                  textAlign: "center",
+                                  lineHeight: "1.4",
+                                }}
+                              >
+                                {renderPrerequisites(courseItem.pre_requisite)}
+                              </Td>
+                              <Td
+                                fontSize="14px"
+                                fontStyle="bitter"
+                                style={{ textAlign: "center" }}
+                              >
+                                {courseItem.num_lecture}
+                              </Td>
+                              <Td
+                                fontSize="14px"
+                                fontStyle="bitter"
+                                style={{ textAlign: "center" }}
+                              >
+                                {courseItem.num_lab}
+                              </Td>
+                              <Td
+                                fontSize="14px"
+                                fontStyle="bitter"
+                                style={{ textAlign: "center" }}
+                              >
+                                {courseItem.credit_unit}
+                              </Td>
+                              <Td
+                                fontSize="14px"
+                                fontStyle="bitter"
+                                style={{ textAlign: "center" }}
+                              >
+                                {gradesAndRemark
+                                  ? gradesAndRemark.grades === 0
+                                    ? "Withdraw"
+                                    : gradesAndRemark.grades === -1
+                                    ? "Incomplete"
+                                    : typeof gradesAndRemark.grades === "number"
+                                    ? gradesAndRemark.grades.toFixed(2)
+                                    : ""
+                                  : ""}
+                              </Td>
+                              <Td
+                                fontSize="14px"
+                                fontStyle="bitter"
+                                style={{ textAlign: "center" }}
+                              >
+                                {gradesAndRemark
+                                  ? gradesAndRemark.grades === 0
+                                    ? "Withdraw"
+                                    : gradesAndRemark.grades === -1
+                                    ? "Incomplete"
+                                    : gradesAndRemark.remarks
+                                  : ""}
+                              </Td>
+
+                              <Td>
+                                {console.log(
+                                  "Course Code:",
+                                  courseItem.course_code
+                                )}
+                                {console.log("Formatted Date:", formattedDate)}
+                                {hasDate ? formattedDate : ""}
+                              </Td>
+
+                              <Td>
+                                {/* {console.log("hasDate:", hasDate)} */}
+                                {hasDate ? (
+                                  <Button disabled>Edit</Button>
+                                ) : (
+                                  <>
+                                    <Button
+                                      onClick={() => {
+                                        if (
+                                          canEditCourse(
+                                            courseItem,
+                                            prerequisiteCoursesWithGrades,
+                                            gradesAndRemarks,
+                                            courseCodesWithoutPrerequisites,
+                                            withoutPrerequisiteWithGrades
+                                          )
+                                        ) {
+                                          handleEditCourse(courseItem);
+                                        }
+                                      }}
+                                      disabled={
+                                        !canEditCourse(
                                           courseItem,
                                           prerequisiteCoursesWithGrades,
                                           gradesAndRemarks,
                                           courseCodesWithoutPrerequisites,
                                           withoutPrerequisiteWithGrades
                                         )
-                                      ) {
-                                        handleEditCourse(courseItem);
                                       }
-                                    }}
-                                    disabled={
-                                      !canEditCourse(
-                                        courseItem,
-                                        prerequisiteCoursesWithGrades,
-                                        gradesAndRemarks,
-                                        courseCodesWithoutPrerequisites,
-                                        withoutPrerequisiteWithGrades
-                                      )
-                                    }
-                                  >
-                                    Edit
-                                  </Button>
+                                    >
+                                      Edit
+                                    </Button>
 
-                                  <Button
-                                    ml={3}
-                                    onClick={() =>
-                                      deleteGradesForCourse(
-                                        courseItem.course_code
-                                      )
-                                    }
-                                    style={{
-                                      backgroundColor: "maroon",
-                                      color: "white",
-                                    }}
-                                  >
-                                    {" "}
-                                    Clear
-                                  </Button>
-                                </>
-                              )}
-                            </Td>
-                          </Tr>
-                        );
-                      })}
-                    </Tbody>
+                                    <Button
+                                      ml={3}
+                                      onClick={() =>
+                                        deleteGradesForCourse(
+                                          courseItem.course_code
+                                        )
+                                      }
+                                      style={{
+                                        backgroundColor: "maroon",
+                                        color: "white",
+                                      }}
+                                    >
+                                      {" "}
+                                      Clear
+                                    </Button>
+                                  </>
+                                )}
+                              </Td>
+                            </Tr>
+                          );
+                        })}
+                      </Tbody>
 
-                    <Tfoot
-                      h="2.5rem"
-                      bgColor="#F0EEED"
-                      colSpan="9"
-                      textAlign="center"
-                    >
-                      <Tr>
-                        <Th></Th>
-                        <Th
-                          fontSize="13px"
-                          fontStyle="bitter"
-                          style={{ textAlign: "center" }}
-                        >
-                          Total
-                        </Th>
-                        <Th></Th>
-                        <Th
-                          fontSize="13px"
-                          fontStyle="bitter"
-                          style={{ textAlign: "center" }}
-                        >
-                          {totalLectureHours}
-                        </Th>
-                        <Th
-                          fontSize="13px"
-                          fontStyle="bitter"
-                          style={{ textAlign: "center" }}
-                        >
-                          {totalLabHours}
-                        </Th>
-                        <Th
-                          fontSize="13px"
-                          fontStyle="bitter"
-                          style={{ textAlign: "center" }}
-                        >
-                          {totalCourseCredits}
-                        </Th>
-                        <Th
-                          fontSize="13px"
-                          fontStyle="bitter"
-                          style={{ textAlign: "center" }}
-                        >
-                          {totalGrades !== undefined && !isNaN(totalGrades)
-                            ? totalGrades.toFixed(2)
-                            : " "}
-                        </Th>
-                        <Th
-                          fontSize="13px"
-                          fontStyle="bitter"
-                          style={{ textAlign: "center" }}
-                        >
-                          {(() => {
-                            if (
-                              totalGrades !== undefined &&
-                              !isNaN(totalGrades)
-                            ) {
-                              if (totalGrades >= 1.0 && totalGrades <= 3.0) {
-                                return "P";
-                              } else if (totalGrades === 5.0) {
-                                return "F";
-                              } else {
-                                return "";
+                      <Tfoot
+                        h="2.5rem"
+                        bgColor="#F0EEED"
+                        colSpan="9"
+                        textAlign="center"
+                      >
+                        <Tr>
+                          <Th></Th>
+                          <Th
+                            fontSize="13px"
+                            fontStyle="bitter"
+                            style={{ textAlign: "center" }}
+                          >
+                            Total
+                          </Th>
+                          <Th></Th>
+                          <Th
+                            fontSize="13px"
+                            fontStyle="bitter"
+                            style={{ textAlign: "center" }}
+                          >
+                            {totalLectureHours}
+                          </Th>
+                          <Th
+                            fontSize="13px"
+                            fontStyle="bitter"
+                            style={{ textAlign: "center" }}
+                          >
+                            {totalLabHours}
+                          </Th>
+                          <Th
+                            fontSize="13px"
+                            fontStyle="bitter"
+                            style={{ textAlign: "center" }}
+                          >
+                            {totalCourseCredits}
+                          </Th>
+                          <Th
+                            fontSize="13px"
+                            fontStyle="bitter"
+                            style={{ textAlign: "center" }}
+                          >
+                            {totalGrades !== undefined && !isNaN(totalGrades)
+                              ? totalGrades.toFixed(2)
+                              : " "}
+                          </Th>
+                          <Th
+                            fontSize="13px"
+                            fontStyle="bitter"
+                            style={{ textAlign: "center" }}
+                          >
+                            {(() => {
+                              if (
+                                totalGrades !== undefined &&
+                                !isNaN(totalGrades)
+                              ) {
+                                if (totalGrades >= 1.0 && totalGrades <= 3.0) {
+                                  return "P";
+                                } else if (totalGrades === 5.0) {
+                                  return "F";
+                                } else {
+                                  return "";
+                                }
                               }
-                            }
-                            return " ";
-                          })()}
-                        </Th>
-                        <Th></Th>
-                        <Th></Th>
-                      </Tr>
-                    </Tfoot>
-                  </Table>
-                </TableContainer>
-                <Button
-                  mt="1rem"
-                  color="white"
-                  bg="palette.primary"
-                  w="5rem"
-                  ml="59rem"
-                  _hover={{
-                    transition: "opacity 0.1s ease-in-out",
-                  }}
-                  _focus={{
-                    border: "none",
-                    opacity: ".5",
-                    transition: "opacity 0.1s ease-in-out",
-                  }}
-                  _active={{
-                    border: "none",
-                    transition: "opacity 0.1s ease-in-out",
-                  }}
-                  onClick={() => handleValidateCourse(filteredCourseItems)}
-                >
-                  Validate
-                </Button>
-              </div>
+                              return " ";
+                            })()}
+                          </Th>
+                          <Th></Th>
+                          <Th></Th>
+                        </Tr>
+                      </Tfoot>
+                    </Table>
+                  </TableContainer>
+                  <Button
+                    mt="1rem"
+                    color="white"
+                    bg="palette.primary"
+                    w="5rem"
+                    ml={{ base: "0", md: "auto" }}
+                    _hover={{
+                      transition: "opacity 0.1s ease-in-out",
+                    }}
+                    _focus={{
+                      border: "none",
+                      opacity: ".5",
+                      transition: "opacity 0.1s ease-in-out",
+                    }}
+                    _active={{
+                      border: "none",
+                      transition: "opacity 0.1s ease-in-out",
+                    }}
+                    onClick={() => handleValidateCourse(filteredCourseItems)}
+                  >
+                    Validate
+                  </Button>
+                </VStack>
+              </Flex>
             );
           }
 
