@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { endPoint } from "../../../config";
+import { Box } from "@chakra-ui/react";
+import { useBreakpointValue } from "@chakra-ui/react";
 
 export default function CreditUnits({
   studentNumber,
@@ -156,7 +158,7 @@ export default function CreditUnits({
       const remainingCreditUnits = totalCreditUnits - validatedTotalunits;
       setRemainingCreditUnits(remainingCreditUnits);
 
-      console.log("validated",validatedTotalunits)
+      console.log("validated", validatedTotalunits);
       onRemainingCreditUnitsChange(remainingCreditUnits);
       onValidatedTotalUnitsChange(validatedTotalunits);
       onTotalCreditUnitsChange(totalCreditUnits);
@@ -169,8 +171,8 @@ export default function CreditUnits({
     if (dataFetched) {
       const canvas = document.getElementById("myPieChart");
       const ctx = canvas.getContext("2d");
-      canvas.width = 400;
-      canvas.height = 400;
+      // canvas.width = 400;
+      // canvas.height = 400;
 
       const myPieChart = new Chart(ctx, {
         type: "pie",
@@ -197,9 +199,19 @@ export default function CreditUnits({
   ]);
 
   return (
-    <div style={{ position: "relative", top: "0", right: "0", zIndex: "0" }}>
-      <canvas id="myPieChart" width="400" height="400"></canvas>
-    </div>
+    <Box
+      position="relative"
+      top="0"
+      right="0"
+      zIndex="0"
+      width={{ base: "200px", md: "300px", lg: "400px" }}
+      height={{ base: "200px", md: "300px", lg: "400px" }}
+    >
+      <canvas
+        id="myPieChart"
+        // height="100%"
+      ></canvas>
+    </Box>
   );
 }
 

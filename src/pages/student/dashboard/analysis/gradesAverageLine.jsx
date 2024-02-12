@@ -1,4 +1,4 @@
-import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Text, VStack, Stack } from "@chakra-ui/react";
 import ApexCharts from "apexcharts";
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -231,8 +231,8 @@ function GradesAverageLine({ studentNumber }) {
         },
       ],
       chart: {
-        height: 400, // Set the desired height
-        width: 1000,
+        // height: 400, // Set the desired height
+        // width: 1000,
         type: "line",
         dropShadow: {
           enabled: true,
@@ -268,7 +268,7 @@ function GradesAverageLine({ studentNumber }) {
         categories: ["First", "Second", "Third", "Summer", "Fourth"],
         labels: {
           style: {
-            fontSize: "12px", 
+            fontSize: "12px",
           },
         },
       },
@@ -276,7 +276,7 @@ function GradesAverageLine({ studentNumber }) {
         min: 1,
         max: 5,
         reversed: true,
-        tickAmount: 16, 
+        tickAmount: 16,
         labels: {
           formatter: function (val) {
             return val.toFixed(2); // Display two decimal places
@@ -315,27 +315,35 @@ function GradesAverageLine({ studentNumber }) {
   ]);
 
   return (
-    <VStack>
-      <div id="chart"></div>
-      <Box padding="2rem">
+    <VStack spacing={4} align="stretch">
+      <Box id="chart" padding={{ base: "0rem", md: "2rem" }}>
+        {/* Ваша чарт-логіка тут */}
+      </Box>
+
+      <Stack
+        spacing={4}
+        w={{ base: "280px", md: "400px", lg: "800px" }}
+        align="stretch"
+        padding={{ base: "0rem", md: "4rem" }}
+      >
         {averageGradesYear1 !== undefined && averageGradesYear1 !== 0 && (
           <HStack>
             <Text>You have a General Weighted Average of </Text>
-            <Text fontWeight="semibold"> {averageGradesYear1} </Text>
-            <Text>for First Year.</Text>
+            <Text fontWeight="semibold">{averageGradesYear1}</Text>
+            <Text> for First Year.</Text>
           </HStack>
         )}
         {averageGradesYear2 !== undefined && averageGradesYear2 !== 0 && (
           <HStack>
             <Text>You have a General Weighted Average of </Text>
-            <Text fontWeight="semibold">{averageGradesYear2} </Text>
+            <Text fontWeight="semibold">{averageGradesYear2}</Text>
             <Text> for Second Year.</Text>
           </HStack>
         )}
         {averageGradesYear3 !== undefined && averageGradesYear3 !== 0 && (
           <HStack>
             <Text>You have a General Weighted Average of </Text>
-            <Text fontWeight="semibold">{averageGradesYear3} </Text>
+            <Text fontWeight="semibold">{averageGradesYear3}</Text>
             <Text> for Third Year.</Text>
           </HStack>
         )}
@@ -344,20 +352,19 @@ function GradesAverageLine({ studentNumber }) {
             <HStack>
               <Text>You have a General Weighted Average of </Text>
               <Text fontWeight="semibold">
-                {" "}
-                {averageGradesForSummerSemester}{" "}
+                {averageGradesForSummerSemester}
               </Text>
-              <Text>for Summer.</Text>
+              <Text> for Summer.</Text>
             </HStack>
           )}
         {averageGradesYear4 !== undefined && averageGradesYear4 !== 0 && (
           <HStack>
-            <Text>You have a General Weighted Average of{" "} </Text>
-            <Text fontWeight="semibold">{averageGradesYear4}{" "}</Text>
+            <Text>You have a General Weighted Average of </Text>
+            <Text fontWeight="semibold">{averageGradesYear4}</Text>
             <Text> for Fourth Year.</Text>
           </HStack>
         )}
-      </Box>
+      </Stack>
     </VStack>
   );
 }

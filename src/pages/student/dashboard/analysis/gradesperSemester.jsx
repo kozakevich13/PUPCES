@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import PropTypes from "prop-types";
 
-import { VStack } from "@chakra-ui/react";
+import { VStack, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { endPoint } from "../../../config";
 
@@ -398,8 +398,8 @@ export default function GradesperSemester({
         },
       ],
       chart: {
-        height: 400, // Set the desired height
-        width: 1000,
+        // height: 400, // Set the desired height
+        // width: 1000,
         type: "line",
         dropShadow: {
           enabled: true,
@@ -495,7 +495,7 @@ export default function GradesperSemester({
 
   return (
     <VStack>
-      <div id="chart2"></div>;
+      <Box w={{ base: "280px", md: "400px", lg: "800px" }} id="chart2"></Box>;
     </VStack>
   );
 }

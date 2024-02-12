@@ -7,6 +7,7 @@ import {
   Text,
   VStack,
   Wrap,
+  Stack,
 } from "@chakra-ui/react";
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -286,12 +287,16 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
               onClick={handleView}
               style={{ fontSize: "25px", cursor: "pointer" }}
             />
-            <VStack>
-              <HStack mt="2rem" gap="30rem">
+            <VStack w="95%">
+              <HStack
+                mt={["1rem", "2rem"]}
+                spacing={["1rem", "2rem", "3rem"]}
+                w="100%"
+              >
                 <HStack>
                   <HStack>
                     <Text
-                      fontSize="19px"
+                      fontSize={{ base: "12px", md: "16px", lg: "19px" }}
                       fontWeight="semibold"
                       fontStyle="Bitter"
                       textAlign="center"
@@ -300,7 +305,9 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                       {capitalizeWords(student.middle_name)}{" "}
                       {capitalizeWords(student.last_name)}
                     </Text>
-                    <Text>({student.student_number})</Text>
+                    <Text fontSize={{ base: "12px", md: "16px", lg: "19px" }}>
+                      ({student.student_number})
+                    </Text>
                   </HStack>
                 </HStack>
                 <Button
@@ -312,22 +319,38 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                     bg: "palette.primaryDark",
                     transition: "background-color 0.3s",
                   }}
+                  ml={{ base: "0%", md: "30%", lg: "40%" }}
+                  fontSize={{ base: "12px", md: "16px", lg: "19px" }}
+                  whiteSpace="break-word"
                 >
                   Recommendation History
                 </Button>
               </HStack>
 
-              <HStack mr="54.5rem" justifyContent="flex-start">
-                <Text fontWeight="semibold" fontSize="19px">
+              <HStack
+                mt={["1rem", "2rem"]}
+                justifyContent={["center", "flex-start"]}
+              >
+                <Text
+                  fontWeight="semibold"
+                  fontSize={{ base: "12px", md: "16px", lg: "19px" }}
+                >
                   Status:
                 </Text>
-                <Text fontSize="19px">{status}</Text>
+                <Text fontSize={{ base: "12px", md: "16px", lg: "19px" }}>
+                  {status}
+                </Text>
               </HStack>
             </VStack>
 
-            <Flex w="100%" justifyContent="center" mt="5rem">
-              <VStack>
-                <Box padding="6rem 5rem" position="relative" boxShadow="lg">
+            <Flex w="95%" justifyContent="center" mt="5rem">
+              <VStack w="100%">
+                <Box
+                  padding="6rem 3rem"
+                  position="relative"
+                  boxShadow="lg"
+                  w="100wv"
+                >
                   <Box
                     bg="#740202"
                     position="absolute"
@@ -340,8 +363,16 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                   >
                     Credit Units
                   </Box>
-                  <HStack spacing="3rem">
-                    <Box>
+                  <Stack
+                    direction={{ base: "column", md: "row" }}
+                    spacing={{ base: "1rem", md: "2rem", lg: "3rem" }}
+                    w="100%"
+                  >
+                    <Box
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                    >
                       {
                         <CreditUnits
                           studentNumber={studentNumber}
@@ -362,16 +393,16 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                       alignItems="center"
                       // boxShadow="md"
                       // bg="gray.100"
-                      w="25rem"
-                      h="12rem"
+                      w="100%"
+                      h={{ base: "6rem", md: "10rem", lg: "15rem" }}
                     >
                       <VStack>
                         <Text
                           textAlign="center"
                           fontWeight="semibold"
-                          fontSize="lg"
+                          fontSize={{ base: "md", md: "md", lg: "lg" }}
                           mb="4"
-                          padding="2rem"
+                          padding={{ base: "0rem", md: "1rem", lg: "2rem" }}
                         >
                           Still have {totalCreditUnits} credit units and taken{" "}
                           {validatedTotalUnits} credit unit(s) and have{" "}
@@ -381,9 +412,9 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                         <Text
                           textAlign="center"
                           fontWeight="semibold"
-                          fontSize="lg"
+                          fontSize={{ base: "md", md: "md", lg: "lg" }}
                           mb="4"
-                          padding="2rem"
+                          padding={{ base: "0rem", md: "1rem", lg: "2rem" }}
                         >
                           Still have {Math.ceil(remainingCreditUnits / 23)}{" "}
                           remaining semester(s) for{"  "}
@@ -393,7 +424,7 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                         </Text>
                       </VStack>
                     </Box>
-                  </HStack>
+                  </Stack>
                 </Box>
 
                 <Box
@@ -417,10 +448,13 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                   <GradesAverageLine studentNumber={studentNumber} />
                 </Box>
 
+                {/*NEXT*/}
+
                 <Box
                   padding="5rem 2rem 0 2rem"
                   position="relative"
                   boxShadow="lg"
+                  w="100wv"
                 >
                   <Box
                     bg="#740202"
@@ -435,7 +469,12 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                     Average Grades per Semester
                   </Box>
                   <VStack spacing="3rem">
-                    <Box w="62rem" h="20rem">
+                    <Box
+                      // padding="5rem 2rem 0 2rem"
+                      position="relative"
+                      // boxShadow="lg"
+                      h={{ base: "12rem", md: "25rem", lg: "35rem" }}
+                    >
                       {
                         <GradesperSemester
                           studentNumber={studentNumber}
@@ -444,7 +483,7 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                       }
                     </Box>
                     <Spacer />
-                    <Box alignItems="center" w="50rem" h="6rem" padding="1rem">
+                    <Box alignItems="center" w="100wv" h="6rem" padding="1rem">
                       {latestGradeInfo ? (
                         <>
                           <Text fontSize="15px" fontWeight="semibold">
@@ -480,7 +519,8 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                   </VStack>
                 </Box>
                 <Box
-                  w="65rem"
+                  // w="65rem"
+                  w="100wv"
                   padding="2rem 2rem 2rem 2rem"
                   position="relative"
                   boxShadow="lg"
@@ -495,10 +535,11 @@ function StudentAnalytics({ studentNumber, evalSemValue, evalYearValue }) {
                       textAlign="center"
                       padding="1rem"
                       color="white"
+                      w="73wv"
                     >
                       Courses
                     </Box>
-                    <Overstay studentNumber={studentNumber} />
+                    <Overstay w="100%" studentNumber={studentNumber} />
                   </VStack>
                 </Box>
               </VStack>

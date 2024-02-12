@@ -12,6 +12,7 @@ import {
   Tooltip,
   Tr,
   VStack,
+  Flex,
 } from "@chakra-ui/react";
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -510,13 +511,13 @@ function Overstay({ studentNumber }) {
   };
 
   return (
-    <VStack mt="5rem">
+    <VStack mt="5rem" w="100%">
       <VStack>
         <HStack>
           <Select
             w="25rem"
             color="gray.500"
-            width="10rem"
+            width={{ base: "8rem", md: "9rem", lg: "10rem" }}
             placeholder="Semester"
             value={semester}
             onChange={(e) => setSemester(e.target.value)}
@@ -528,7 +529,7 @@ function Overstay({ studentNumber }) {
             <option value="All Semester">All Semester</option>
           </Select>
           <Select
-            w="10rem"
+            width={{ base: "8rem", md: "9rem", lg: "10rem" }}
             color="gray.500"
             placeholder="Year"
             value={year}
@@ -543,92 +544,103 @@ function Overstay({ studentNumber }) {
         </HStack>
         {coursesWithoutGradesFromPreviousYear &&
           coursesWithoutGradesFromPreviousYear.length > 0 && (
-            <TableContainer overflowX="auto" w="100%" mt="1rem">
-              <Table
-                variant="simple"
-                fontFamily="inter"
-                size="sm"
-                style={{ minWidth: "800px" }}
-              >
-                <Thead bg="palette.primary" h="5rem">
-                  <Tr>
-                    <Th
-                      style={{ textAlign: "center" }}
-                      color="palette.secondary"
-                    >
-                      <div>Course</div>
-                      <div>Code</div>
-                    </Th>
-                    <Th
-                      style={{ textAlign: "center" }}
-                      color="palette.secondary"
-                    >
-                      Course Title
-                    </Th>
-                    <Th
-                      style={{ textAlign: "center" }}
-                      color="palette.secondary"
-                    >
-                      Prerequisite
-                    </Th>
-                    <Th
-                      style={{ textAlign: "center" }}
-                      color="palette.secondary"
-                    >
-                      <div>Credit</div>
-                      <div>Unit</div>
-                    </Th>
-                    <Th
-                      style={{ textAlign: "center" }}
-                      color="palette.secondary"
-                    >
-                      <div>Course</div>
-                      <div>Year</div>
-                    </Th>
-                    <Th
-                      style={{ textAlign: "center" }}
-                      color="palette.secondary"
-                    >
-                      <div>Course</div>
-                      <div>Semester</div>
-                    </Th>
-                  </Tr>
-                </Thead>
-                {isYearSemesterSelected ? (
-                  <Tbody>
-                    {filteredCourses.map((course) => (
-                      <Tr key={course.courseCode}>
-                        <Td>{course.courseCode}</Td>
-                        <Td fontSize="12px">{course.courseTitle}</Td>
-                        <Td> {renderPrerequisites(course.pre_requisite)}</Td>
-                        <Td>{course.creditUnits}</Td>
-                        <Td>
-                          {course.courseYear === 0 ? "" : course.courseYear}
-                        </Td>
-                        <Td fontSize="10px">{course.courseSem}</Td>
+            <Flex w="72vw" overflow="visible">
+              <VStack w="95%" ml="0.5rem">
+                <TableContainer w="90%" mt="1rem">
+                  <Table
+                    variant="simple"
+                    fontFamily="inter"
+                    size="sm"
+                    overflowX="auto"
+                  >
+                    <Thead bg="palette.primary" h="5rem">
+                      <Tr overflowX="auto" width="200px">
+                        <Th
+                          style={{ textAlign: "center" }}
+                          color="palette.secondary"
+                        >
+                          <div>Course</div>
+                          <div>Code</div>
+                        </Th>
+                        <Th
+                          style={{ textAlign: "center" }}
+                          color="palette.secondary"
+                        >
+                          Course Title
+                        </Th>
+                        <Th
+                          style={{ textAlign: "center" }}
+                          color="palette.secondary"
+                        >
+                          Prerequisite
+                        </Th>
+                        <Th
+                          style={{ textAlign: "center" }}
+                          color="palette.secondary"
+                        >
+                          <div>Credit</div>
+                          <div>Unit</div>
+                        </Th>
+                        <Th
+                          style={{ textAlign: "center" }}
+                          color="palette.secondary"
+                        >
+                          <div>Course</div>
+                          <div>Year</div>
+                        </Th>
+                        <Th
+                          style={{ textAlign: "center" }}
+                          color="palette.secondary"
+                        >
+                          <div>Course</div>
+                          <div>Semester</div>
+                        </Th>
                       </Tr>
-                    ))}
-                  </Tbody>
-                ) : (
-                  <Text>Please select Year and Semester</Text>
-                )}
-                <Tfoot
-                  h="2rem"
-                  bgColor="#F0EEED"
-                  colSpan="9"
-                  textAlign="center"
-                >
-                  <Tr>
-                    <Th></Th>
-                    <Th></Th>
-                    <Th></Th>
-                    <Th>{calculateTotalCreditUnits(filteredCourses)}</Th>
-                    <Th></Th>
-                    <Th></Th>
-                  </Tr>
-                </Tfoot>
-              </Table>
-            </TableContainer>
+                    </Thead>
+                    {isYearSemesterSelected ? (
+                      <Tbody>
+                        {filteredCourses.map((course) => (
+                          <Tr key={course.courseCode}>
+                            <Td>{course.courseCode}</Td>
+                            <Td fontSize={{ base: "10px", md: "12px" }}>
+                              {course.courseTitle}
+                            </Td>
+                            <Td>
+                              {" "}
+                              {renderPrerequisites(course.pre_requisite)}
+                            </Td>
+                            <Td>{course.creditUnits}</Td>
+                            <Td>
+                              {course.courseYear === 0 ? "" : course.courseYear}
+                            </Td>
+                            <Td fontSize={{ base: "8px", md: "10px" }}>
+                              {course.courseSem}
+                            </Td>
+                          </Tr>
+                        ))}
+                      </Tbody>
+                    ) : (
+                      <Text>Please select Year and Semester</Text>
+                    )}
+                    <Tfoot
+                      h="2rem"
+                      bgColor="#F0EEED"
+                      colSpan="9"
+                      textAlign="center"
+                    >
+                      <Tr>
+                        <Th></Th>
+                        <Th></Th>
+                        <Th></Th>
+                        <Th>{calculateTotalCreditUnits(filteredCourses)}</Th>
+                        <Th></Th>
+                        <Th></Th>
+                      </Tr>
+                    </Tfoot>
+                  </Table>
+                </TableContainer>
+              </VStack>
+            </Flex>
           )}
       </VStack>
     </VStack>
