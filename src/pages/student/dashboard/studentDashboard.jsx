@@ -426,17 +426,21 @@ export default function StudentDashboard() {
         w="100%"
       >
         <HStack
-          justifyContent="center"
-          spacing={{ base: "1rem", md: "3rem", lg: "5rem" }}
-          w="100vw"
+          spacing={{ base: "1rem", md: "3rem", lg: "20rem" }}
+          w="86vw"
+          ml="auto"
+          mr="auto"
+          flexDirection={{ base: "column", md: "row" }}
         >
           <VStack spacing={{ base: "1rem", md: "2rem", lg: "3rem" }}>
             <Text
               fontSize={{ base: "16px", md: "20px", lg: "24px" }}
               fontWeight="semibold"
               fontStyle="Bitter"
-              textAlign="center"
-              ml={{ base: "0", md: "7rem" }}
+              w="100%"
+              ml="0"
+              align="flex-start"
+              pl="1rem"
             >
               {student.program_id === 1
                 ? "Bachelor of Science in Information Technology"
@@ -447,13 +451,12 @@ export default function StudentDashboard() {
                 : ""}
               {programName}
             </Text>
-            <HStack>
+            <HStack w="100%" ml="0" align="flex-start" pl="1rem">
               <Text
                 fontSize={{ base: "16px", md: "20px", lg: "24px" }}
                 fontWeight="semibold"
                 fontStyle="Bitter"
                 textAlign="center"
-                ml={{ base: "0", md: "7rem" }}
               >
                 {capitalizeWords(student.first_name)}{" "}
                 {capitalizeWords(student.middle_name)}{" "}
@@ -467,7 +470,10 @@ export default function StudentDashboard() {
           </VStack>
           <HStack
             mt={{ base: "1rem", md: "2rem", lg: "3rem" }}
-            mr={{ base: "1rem", md: "2rem", lg: "3rem" }}
+            ml={{ base: "0", md: "0", lg: "auto" }}
+            mr={{ base: "0", md: "0" }}
+            align="end-start"
+            pr="1rem"
           >
             <Text fontSize={{ base: "16px", md: "20px", lg: "24px" }}>
               Status:
