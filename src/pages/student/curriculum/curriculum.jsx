@@ -212,7 +212,7 @@ function Curriculum() {
     console.log("Course Type in Curriculum:", courseType);
     axios
       .get(
-        `http://localhost:4000/api/curriculum?program_id=${1}&year_started=${2022}`
+        `${endPoint}/curriculum?program_id=${programId}&year_started=${courseType}`
       )
       .then((res) => {
         const courseData = res.data;
@@ -299,7 +299,7 @@ function Curriculum() {
         console.log("Received gradesData:", gradesData);
 
         const curriculumResponse = await axios.get(
-          `http://localhost:4000/api/curriculum?program_id=${1}&year_started=${2022}`
+          `${endPoint}/curriculum?program_id=${programId}&year_started=${courseType}`
         );
         console.log("Fetched curriculum data:", curriculumResponse.data);
 
@@ -735,7 +735,7 @@ function Curriculum() {
       );
     });
     const curriculumResponse = await axios.get(
-      `http://localhost:4000/api/curriculum?program_id=${1}&year_started=${2022}`
+      `${endPoint}/curriculum?program_id=${programId}&year_started=${courseType}`
     );
     console.log("Fetched curriculum data:", curriculumResponse.data);
 
@@ -939,7 +939,7 @@ function Curriculum() {
 
     for (const courseItem of coursesToSubmit) {
       const curriculumResponse = await axios.get(
-        `http://localhost:4000/api/curriculum?program_id=${1}&year_started=${2022}`
+        `${endPoint}/curriculum?program_id=${programId}&year_started=${courseType}`
       );
       console.log("Fetched curriculum data grade:", curriculumResponse.data);
 
@@ -1222,7 +1222,7 @@ function Curriculum() {
       minHeight="100vh"
       justifyContent="space-between"
       alignItems="center"
-      //w="100%"
+      w="100vw"
       //bgColor="#F8F8F8"
     >
       <Box
@@ -1238,8 +1238,8 @@ function Curriculum() {
         <Navbar />
       </Box>
 
-      <VStack mt="0" mb="0" flexGrow={1} w="100%">
-        <InputGroup mt="8rem" ml="0" w="20rem">
+      <VStack mt="0" mb="0" flexGrow={1} w="100%" minH="80vh">
+        <InputGroup mt="8rem" ml="auto" mr="auto" w="20rem">
           <Input
             p="1rem"
             fontFamily="inter"
@@ -1943,11 +1943,10 @@ function Curriculum() {
               onSaveSuccess={handleGradesSaved}
             />
           )}
-
-          <Spacer mt="10rem" />
-          <Footer />
         </div>
       </VStack>
+      <Spacer mt="10rem" />
+      <Footer mt="auto" />
     </Flex>
   );
 }
