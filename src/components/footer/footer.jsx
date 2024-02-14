@@ -29,7 +29,8 @@ export default function Footer() {
               fontSize="0.7rem"
               justifyContent="left"
               pb="1rem"
-              pr={{ base: "0vw", md: "10vw", lg: "10vw" }}
+              mr={{ base: "0", md: "auto", lg: "auto" }}
+              pl={{ base: "auto", md: "3rem", lg: "3.3rem" }}
             >
               {" "}
               <Image w="16px" src={gmail} />
