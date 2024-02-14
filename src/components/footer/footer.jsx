@@ -1,35 +1,74 @@
-import { Flex, HStack, Text } from "@chakra-ui/react";
+import { Flex, HStack, VStack, Text, Image, Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/PUPlogo.png";
+import gmail from "../../assets/gmail.png";
+
 export default function Footer() {
   return (
     <Flex
       position="absolute"
       bottom={0}
       w="100vw"
-      bg="gray.100" // Set the background color to gray
+      bg="#740202" // Set the background color to gray
       minH="40px"
       justifyContent="center"
       alignItems="center"
       boxShadow="0px -2px 4px rgba(0, 0, 0, 0.2)" // Add a shadow
+      color="white"
     >
-      <HStack flexWrap="wrap" justifyContent="center">
-        <Text color="black" fontSize="0.8rem" fontFamily="inter">
-          For questions and comments, email us at @pupscesgmail.com
-        </Text>
-
-        <HStack>
-          <Link to="/terms">
-            <Text color="black" fontSize="0.8rem" fontFamily="inter">
-              Terms
+      <HStack flexWrap="wrap" justifyContent="center" pt="0.5rem" pb="0.5rem">
+        <VStack gap="0.3rem">
+          <HStack>
+            <Image w="45px" src={logo} />
+            <Text fontSize="0.7rem" fontFamily="inter">
+              PUP Student Curriculum Evaluation System
             </Text>
-          </Link>
-          <Text color="black" fontSize="0.8rem" fontFamily="inter">
-            and
-          </Text>
-          <Text color="black" fontSize="0.8rem" fontFamily="inter">
-            Privacy Policy
-          </Text>
-        </HStack>
+          </HStack>
+          <Box
+            fontSize="0.7rem"
+            justifyContent="left"
+            pb="1rem"
+            pr={{ base: "0vw", md: "10vw", lg: "10vw" }}
+          >
+            {" "}
+            <Image w="16px" src={gmail} />
+          </Box>
+          <HStack>
+            <Text fontSize="0.5rem" fontFamily="inter">
+              Copyright 2024 PUPSCES || All rights reserved
+            </Text>
+          </HStack>
+        </VStack>
+        <Box ml={{ base: "0vw", md: "30vw", lg: "30vw" }} w="10rem">
+          <VStack textAlign={{ base: "center", md: "left", lg: "left" }}>
+            <Link to="/terms">
+              <Text
+                fontSize="0.6rem"
+                fontFamily="inter"
+                textAlign={{ base: "center", md: "left", lg: "left" }}
+                w="10rem"
+              >
+                About Us
+              </Text>
+            </Link>
+            <Text
+              fontSize="0.6rem"
+              fontFamily="inter"
+              textAlign={{ base: "center", md: "left", lg: "left" }}
+              w="10rem"
+            >
+              Privacy Policy
+            </Text>
+            <Text
+              fontSize="0.6rem"
+              fontFamily="inter"
+              textAlign={{ base: "center", md: "left", lg: "left" }}
+              w="10rem"
+            >
+              Terms and Condition
+            </Text>
+          </VStack>
+        </Box>
       </HStack>
     </Flex>
   );
