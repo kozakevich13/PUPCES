@@ -176,11 +176,23 @@ function FacultyUpload() {
 
   return (
     <HStack gap="3rem">
-      <Card w="79rem" h="10rem" boxShadow="2xl" borderRadius="30px">
+      <Card
+        w={{ base: "20rem", md: "auto", lg: "90vw" }}
+        h="10rem"
+        boxShadow="2xl"
+        borderRadius="30px"
+      >
         <CardHeader>Upload Faculty List</CardHeader>
         <Divider bg="gray.300" />
-        <CardBody ml="2rem" justifyContent="center">
-          <HStack justifyContent="center" alignContent="center" ml="4rem">
+        <CardBody
+          ml={{ base: "0rem", md: "1rem", lg: "2rem" }}
+          justifyContent="center"
+        >
+          <HStack
+            justifyContent="center"
+            alignContent="center"
+            ml={{ base: "0rem", md: "2rem", lg: "4rem" }}
+          >
             <Button
               style={{
                 backgroundColor: "#740202",

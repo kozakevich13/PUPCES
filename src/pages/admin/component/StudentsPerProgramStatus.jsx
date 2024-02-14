@@ -96,15 +96,24 @@ function StudentsPerProgramStatus() {
   }, []);
 
   return (
-    <HStack gap="3rem">
-      <Card w="38rem" h="34rem" boxShadow="2xl" borderRadius="30px">
+    <Box
+      gap="3rem"
+      display="flex"
+      flexDirection={{ base: "column", md: "row" }}
+    >
+      <Card
+        w={{ base: "20rem", md: "auto", lg: "43vw" }}
+        h="34rem"
+        boxShadow="2xl"
+        borderRadius="30px"
+      >
         <CardHeader>Students by Program</CardHeader>
         <Divider bg="gray.300" />
         <CardBody ml="2rem" justifyContent="center">
           {isBoxVisible && (
             <Box
               w="100%"
-              h="10%"
+              h={{ base: "30rem", md: "34rem", lg: "34rem" }}
               justifyContent="center"
               alignItems="center"
               borderRadius="20px" // Adjust as needed
@@ -171,14 +180,23 @@ function StudentsPerProgramStatus() {
           </Box>
         </CardBody>
       </Card>
-      <Card w="38rem" h="34rem" boxShadow="2xl" borderRadius="30px">
+      <Card
+        w={{ base: "20rem", md: "auto", lg: "43vw" }}
+        h={{ base: "30rem", md: "34rem", lg: "34rem" }}
+        boxShadow="2xl"
+        borderRadius="30px"
+      >
         <CardHeader>Students by Status</CardHeader>
         <Divider bg="gray.300" />
-        <CardBody ml="9rem" justifyContent="center">
+        <CardBody
+          ml={{ base: "0", md: "0rem", lg: "auto" }}
+          mr={{ base: "0", md: "0rem", lg: "auto" }}
+          justifyContent="center"
+        >
           <PolarAreaChart />
         </CardBody>
       </Card>
-    </HStack>
+    </Box>
   );
 }
 

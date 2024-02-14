@@ -35,9 +35,14 @@ function Dashboard() {
   return (
     <main>
       <VStack>
-        <HStack gap="3rem">
+        <Box
+          display="flex"
+          gap="3rem"
+          flexDirection={{ base: "column", md: "row" }}
+        >
           <Box
-            w="38rem"
+            w="43vw"
+            minW="15rem"
             h="12rem"
             bgColor="white"
             boxShadow="2xl"
@@ -66,7 +71,8 @@ function Dashboard() {
             </Box>
           </Box>
           <Box
-            w="38rem"
+            w="43vw"
+            minW="15rem"
             h="12rem"
             bgColor="white"
             boxShadow="2xl"
@@ -94,7 +100,7 @@ function Dashboard() {
               />
             </Box>
           </Box>
-        </HStack>
+        </Box>
         <Text mt="2rem" fontWeight="semibold" fontSize="20px">
           There are total of {studentCount} student(s) and total of{" "}
           {facultyCount} Faculty

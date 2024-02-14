@@ -41,10 +41,21 @@ const PieChart = () => {
     },
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 1200,
         options: {
           chart: {
-            width: 200,
+            width: 400,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+      {
+        breakpoint: 950,
+        options: {
+          chart: {
+            width: 300,
           },
           legend: {
             position: "bottom",

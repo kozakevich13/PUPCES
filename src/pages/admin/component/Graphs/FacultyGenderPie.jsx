@@ -1,37 +1,36 @@
 import PropTypes from "prop-types";
 
 import Chart from "react-apexcharts";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { endPoint } from "../../../config";
 
 const PieChart = () => {
+  const [femaleFaculty, setFemaleFaculty] = useState(0);
+  const [maleFaculty, setMaleFaculty] = useState(0);
 
-    const [femaleFaculty, setFemaleFaculty] = useState(0);
-    const [maleFaculty, setMaleFaculty] = useState(0);
+  useEffect(() => {
+    // Fetch and count all students with the specified gender
+    axios
+      .get(`${endPoint}/faculty`)
+      .then((response) => {
+        // Assuming each student object has a "gender" property
+        const data = response.data;
 
-    useEffect(() => {
-      // Fetch and count all students with the specified gender
-      axios
-        .get(`${endPoint}/faculty`)
-        .then((response) => {
-          // Assuming each student object has a "gender" property
-          const data = response.data;
+        const maleCount = data.filter(
+          (faculty) => faculty.gender === "Male"
+        ).length;
+        const femaleCount = data.filter(
+          (faculty) => faculty.gender === "Female"
+        ).length;
 
-          const maleCount = data.filter(
-            (faculty) => faculty.gender === "Male"
-          ).length;
-          const femaleCount = data.filter(
-            (faculty) => faculty.gender === "Female"
-          ).length;
-
-          setMaleFaculty(maleCount);
-          setFemaleFaculty(femaleCount);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, []);
+        setMaleFaculty(maleCount);
+        setFemaleFaculty(femaleCount);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   const options = {
     chart: {
       type: "pie",
@@ -42,10 +41,21 @@ const PieChart = () => {
     },
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 1200,
         options: {
           chart: {
-            width: 200,
+            width: 400,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+      {
+        breakpoint: 950,
+        options: {
+          chart: {
+            width: 300,
           },
           legend: {
             position: "bottom",

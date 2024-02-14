@@ -118,7 +118,7 @@ const PolarAreaChart = () => {
   return (
     <canvas
       id="myPolarAreaChart"
-      width={200} // Set the desired width
+      width={600} // Set the desired width
       height={150} // Set the desired height
       style={{ width: "100%", maxWidth: "300px" }}
     ></canvas>

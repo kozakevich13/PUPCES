@@ -20,7 +20,6 @@ import InitialsAvatar from "react-initials-avatar";
 import { Link as RouterLink } from "react-router-dom";
 
 export default function Admin() {
-  
   const scrollToFacultyUpload = () => {
     const facultyUploadSection = document.getElementById(
       "facultyUploadSection"
@@ -35,8 +34,7 @@ export default function Admin() {
       mt="0"
       mb="0"
       flexGrow={1}
-      w="100%"
-      minW="100vw"
+      w="100vw"
       h="100vh"
       bgColor="#F8F8F8"
       display="flex"
@@ -45,7 +43,10 @@ export default function Admin() {
       overflowY="auto"
     >
       <HStack justifyContent="space-between">
-        <HStack padding="0 10rem 0">
+        <HStack
+          pl={{ base: "1rem", md: "5rem", lg: "10rem" }}
+          pr={{ base: "1rem", md: "5rem", lg: "10rem" }}
+        >
           <Image src={PUP} alt="PUP Logo" boxSize="60px" objectFit="contain" />
           <Text fontWeight="semibold">PUP Curriculum Evaluaton System</Text>
         </HStack>
@@ -55,9 +56,8 @@ export default function Admin() {
           _hover={{ textDecoration: "none", color: "black" }}
           _focus={{ outline: "none" }}
         >
-          <div
+          <Box
             style={{
-              marginRight: "10rem",
               width: "40px", // Set to your preferred size
               height: "40px", // Set to your preferred size
               borderRadius: "50%",
@@ -68,13 +68,19 @@ export default function Admin() {
               alignItems: "center",
               cursor: "pointer",
             }}
+            mr={{ base: "1rem", md: "5rem", lg: "10rem" }}
           >
             <InitialsAvatar name="Admin" />
-          </div>
+          </Box>
         </ChakraLink>
       </HStack>
 
-      <HStack padding="0 10rem 0" justifyContent="space-between" mt="4rem">
+      <HStack
+        pl={{ base: "1rem", md: "5rem", lg: "10rem" }}
+        pr={{ base: "1rem", md: "5rem", lg: "10rem" }}
+        justifyContent="space-between"
+        mt="4rem"
+      >
         <Text fontSize="22px" fontWeight="semibold">
           Dashboard
         </Text>
@@ -83,27 +89,43 @@ export default function Admin() {
         </Button>
       </HStack>
 
-      <Wrap mt="2rem" ml="9rem">
+      <Wrap mt="2rem" ml={{ base: "1rem", md: "2rem", lg: "5rem" }}>
         <VStack>
-
           <Dashboard />
-          
         </VStack>
       </Wrap>
 
-      <Box ml="9rem" mt="3rem">
+      <Box
+        ml={{ base: "auto", md: "4rem", lg: "auto" }}
+        mr={{ base: "auto", md: "0rem", lg: "auto" }}
+        mt="3rem"
+      >
         <Gender />
       </Box>
-      <Box ml="9rem" mt="3rem">
+      <Box
+        ml={{ base: "auto", md: "4rem", lg: "auto" }}
+        mr={{ base: "auto", md: "0rem", lg: "auto" }}
+        mt="3rem"
+      >
         <StudentFaculty />
       </Box>
-      <Box ml="9rem" mt="3rem" id="facultyUploadSection">
+      <Box
+        ml={{ base: "auto", md: "4rem", lg: "auto" }}
+        mr={{ base: "auto", md: "0rem", lg: "auto" }}
+        mt="3rem"
+        id="facultyUploadSection"
+      >
         <FacultyUpload />
       </Box>
-      <Box ml="9rem" mt="3rem" id="facultyUploadSection">
+      <Box
+        ml={{ base: "auto", md: "4rem", lg: "auto" }}
+        mr={{ base: "auto", md: "0rem", lg: "auto" }}
+        mt="3rem"
+        id="facultyUploadSection"
+      >
         <ProgramUpload />
       </Box>
-      <Box mt="5rem" position="relative">
+      <Box mt="12rem" position="relative" bg="red">
         <Footer />
       </Box>
     </Box>
