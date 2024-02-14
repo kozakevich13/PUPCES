@@ -212,7 +212,7 @@ function Curriculum() {
     console.log("Course Type in Curriculum:", courseType);
     axios
       .get(
-        `${endPoint}/curriculum?program_id=${programId}&year_started=${courseType}`
+        `http://localhost:4000/api/curriculum?program_id=${1}&year_started=${2022}`
       )
       .then((res) => {
         const courseData = res.data;
@@ -299,7 +299,7 @@ function Curriculum() {
         console.log("Received gradesData:", gradesData);
 
         const curriculumResponse = await axios.get(
-          `${endPoint}/curriculum?program_id=${programId}&year_started=${courseType}`
+          `http://localhost:4000/api/curriculum?program_id=${1}&year_started=${2022}`
         );
         console.log("Fetched curriculum data:", curriculumResponse.data);
 
@@ -735,7 +735,7 @@ function Curriculum() {
       );
     });
     const curriculumResponse = await axios.get(
-      `${endPoint}/curriculum?program_id=${programId}&year_started=${courseType}`
+      `http://localhost:4000/api/curriculum?program_id=${1}&year_started=${2022}`
     );
     console.log("Fetched curriculum data:", curriculumResponse.data);
 
@@ -939,7 +939,7 @@ function Curriculum() {
 
     for (const courseItem of coursesToSubmit) {
       const curriculumResponse = await axios.get(
-        `${endPoint}/curriculum?program_id=${programId}&year_started=${courseType}`
+        `http://localhost:4000/api/curriculum?program_id=${1}&year_started=${2022}`
       );
       console.log("Fetched curriculum data grade:", curriculumResponse.data);
 
@@ -1268,34 +1268,51 @@ function Curriculum() {
         </InputGroup>
         <div ref={containerRef}>
           <VStack>
-            <VStack
+            <Flex
               mb="3rem"
               spacing={2}
               justifyContent="flex-start"
-              ml="0"
-              w="90vw"
-              flexDirection="row"
+              ml="auto"
+              mr="auto"
+              w="70vw"
+              flexDirection={{ base: "column", md: "row" }}
             >
-              <Text mt="-10" fontSize="19px" fontWeight="bold" pb="2rem">
-                {programName}
-              </Text>
-
-              <HStack mt="2rem" mr="5rem" spacing={4}>
+              <VStack mr={{ base: "0rem", md: "5rem", lg: "5rem" }} spacing={1}>
                 <Text
+                  // mt="-10"
+                  fontSize="19px"
                   fontWeight="bold"
-                  fontSize="17.5px"
-                  fontStyle="Bitter"
-                  textAlign="center"
-                  pb="2rem"
+                  // pb="2rem"
+                  textAlign={{ base: "center", md: "left" }}
                 >
-                  {capitalizeWords(studentData.first_name)}{" "}
-                  {capitalizeWords(studentData.middle_name)}{" "}
-                  {capitalizeWords(studentData.last_name)}
+                  {programName}
                 </Text>
-                <Text pb="2rem">( {studentData.student_number})</Text>
-              </HStack>
+                <Box
+                  display="flex"
+                  flexDirection={{ base: "column", md: "row" }}
+                  w="100%"
+                >
+                  {" "}
+                  <Text
+                    fontWeight="bold"
+                    fontSize="17.5px"
+                    fontStyle="Bitter"
+                    textAlign="left"
+                    w="50%"
+                    // pb="2rem"
+                  >
+                    {capitalizeWords(studentData.first_name)}{" "}
+                    {capitalizeWords(studentData.middle_name)}{" "}
+                    {capitalizeWords(studentData.last_name)}
+                  </Text>
+                  <Text w="100%">( {studentData.student_number})</Text>
+                </Box>
+              </VStack>
               <Button
                 ml="auto"
+                mr={{ base: "auto", md: "0", lg: "0" }}
+                mt={{ base: "0", md: "1rem", lg: "auto" }}
+                mb={{ base: "0", md: "0rem", lg: "auto" }}
                 colorScheme="teal"
                 style={{
                   color: "white",
@@ -1313,7 +1330,7 @@ function Curriculum() {
               >
                 Download
               </Button>
-            </VStack>
+            </Flex>
 
             {allCourses.length === 0 ? (
               <Text>No courses available</Text>
