@@ -1533,12 +1533,12 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
               width={{ base: "8rem", md: "10rem", lg: "12rem" }}
               onClick={handleViewAnalytics}
               _hover={{ bg: "#FFD966", transition: "background-color 0.3s" }}
-              ml={{ base: "2rem", md: "12rem", lg: "15rem" }}
+              ml={{ base: "2rem", md: "12rem", lg: "3rem" }}
             >
               View Analytics
             </Button>
 
-            <Box ml={{ base: "2rem", md: "6rem", lg: "12rem" }}>
+            <Box ml={{ base: "2rem", md: "auto", lg: "auto" }}>
               <HStack spacing={4}>
                 <VStack
                   align="start"
@@ -1588,7 +1588,13 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
             </Box>
           </HStack>
 
-          <Text mt="2rem" fontSize="19px" fontWeight="bold" textAlign="center">
+          <Text
+            mt="2rem"
+            fontSize="19px"
+            fontWeight="bold"
+            textAlign="left"
+            ml={{ base: "1rem", md: "2rem", lg: "5rem" }}
+          >
             {programName}
           </Text>
           <HStack mt="2rem" ml={{ base: "1rem", md: "3rem", lg: "5rem" }}>
@@ -1630,7 +1636,11 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
             </Text>
           </HStack>
 
-          <HStack mt="1rem" ml={{ base: "1rem", md: "3rem", lg: "5rem" }}>
+          <HStack
+            w="86%"
+            mt="1rem"
+            ml={{ base: "1rem", md: "3rem", lg: "5rem" }}
+          >
             <HStack>
               <Text fontSize="17.5px" fontWeight="semibold">
                 Total Credit Units Required{" "}
@@ -1638,7 +1648,7 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
 
               <Text>{totalCreditUnits} Units</Text>
             </HStack>
-            <VStack ml={{ base: "5%", md: "10%", lg: "20%" }}>
+            <VStack ml={{ base: "5%", md: "10%", lg: "auto" }}>
               <HStack>
                 <Text
                   fontSize={{ base: "15px", md: "17.5px" }}
@@ -1657,7 +1667,8 @@ function UsersEvaluation({ studentNumber, evalYearValue, evalSemValue }) {
           </HStack>
           <HStack
             mt={{ base: "1rem", md: "2rem" }}
-            ml={{ base: "0rem", md: "40%", lg: "50%" }}
+            ml={{ base: "0rem", md: "40%", lg: "auto" }}
+            mr={{ base: "0rem", md: "40%", lg: "auto" }}
           >
             <Button
               bg="#740202"
