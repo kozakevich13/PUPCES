@@ -17,9 +17,9 @@ export default function Footer() {
       color="white"
     >
       <VStack pb="0.5rem">
-        <HStack flexWrap="wrap" justifyContent="center" pt="0.5rem">
-          <VStack gap="0.3rem">
-            <HStack>
+        <HStack flexWrap="wrap" justifyContent="center">
+          <VStack spacing={1}>
+            <HStack mt="0.5rem">
               <Image w="45px" src={logo} />
               <Text fontSize="0.7rem" fontFamily="inter">
                 PUP Student Curriculum Evaluation System
@@ -28,7 +28,7 @@ export default function Footer() {
             <Box
               fontSize="0.7rem"
               justifyContent="left"
-              pb="1rem"
+              pb={{ base: "0rem", md: "1rem", lg: "1rem" }}
               mr={{ base: "0", md: "auto", lg: "auto" }}
               pl={{ base: "auto", md: "3rem", lg: "3.3rem" }}
             >
@@ -37,7 +37,10 @@ export default function Footer() {
             </Box>
           </VStack>
           <Box ml={{ base: "0vw", md: "30vw", lg: "30vw" }} w="10rem">
-            <VStack textAlign={{ base: "center", md: "left", lg: "left" }}>
+            <VStack
+              spacing={1}
+              textAlign={{ base: "center", md: "left", lg: "left" }}
+            >
               <Link to="/terms">
                 <Text
                   fontSize="0.6rem"

@@ -626,21 +626,21 @@ function Evaluation() {
       alignItems="center"
       height="100%"
       position="relative"
+      w="100vw"
     >
       <Box w="120%">
         <Navbar />
       </Box>
 
-      <Center
-        mr={year === "All Years" || semester === "All Semester" ? "28rem" : ""}
-      >
+      <Center>
         <VStack
           alignItems="center"
           justifyContent="center"
           mb="2rem"
-          ml={evaluations != 0 ? "" : "28rem"}
+          ml="0"
+          mt="10rem"
         >
-          <Text textAlign="center">
+          <Text textAlign="center" fontSize={{ base: "15px", md: "17.5px" }}>
             {" "}
             Select Year and Semester of the Recommendation:
           </Text>
@@ -713,7 +713,7 @@ function Evaluation() {
               style={{
                 backgroundColor: "#740202",
                 justifyContent: "flex-end",
-                marginLeft: "50rem",
+                marginLeft: "0",
                 color: "white",
                 transition: "background-color 0.3s ease, transform 0.3s ease",
               }}
@@ -731,21 +731,24 @@ function Evaluation() {
             </Button>
           )}
           <div ref={containerRef}>
-            <VStack
-              ml={evaluations != 0 ? "13rem" : "10rem"}
-              align="flex-start"
-            >
-              <HStack justify="flex-start">
-                <Text fontSize="17.5px" fontWeight="semibold">
+            <VStack align="flex-start">
+              <HStack justify="flex-start" textAlign="center">
+                <Text
+                  fontSize={{ base: "15px", md: "17.5px" }}
+                  fontWeight="semibold"
+                  pl={{ base: "1.5rem", md: "6rem", lg: "8rem" }}
+                >
                   Student Name:
                 </Text>
                 <Text>
                   {capitalizeWords(fname)} {capitalizeWords(mname)}{" "}
                   {capitalizeWords(lname)}
                 </Text>
-                <Text>({studentNumber})</Text>
+                <Text w={{ base: "6rem", md: "6rem", lg: "10rem" }}>
+                  ({studentNumber})
+                </Text>
               </HStack>
-              <HStack mb="2rem">
+              <HStack mb="2rem" ml="1rem" mr="1rem">
                 <Text fontWeight="semibold" fontSize="17.5px">
                   Recommendation for:
                 </Text>
@@ -756,7 +759,7 @@ function Evaluation() {
               {console.log("Rendering table:", !noEvaluations)}
               {evaluations.length === 0 ? (
                 <VStack
-                  ml={evaluations.length !== 0 ? "" : "20rem"}
+                  ml="0"
                   height="100%"
                   justifyContent="center"
                   alignItems="center"
@@ -806,26 +809,60 @@ function Evaluation() {
                     let totalCourseCredits = 0;
 
                     return (
-                      <Wrap mx="auto" spacing="3" w="70%" key={key}>
-                        <VStack mt="2rem" spacing="1" align="flex-start">
+                      <Wrap mx="auto" spacing="3" w="90%" key={key}>
+                        <VStack
+                          spacing="1"
+                          align="flex-start"
+                          flexDirection={{
+                            base: "column",
+                            md: "row",
+                            lg: "row",
+                          }}
+                          w="90vw"
+                          ml="1rem"
+                        >
                           <HStack>
-                            <Text fontSize="17.5px" fontWeight="semibold">
+                            <Text
+                              fontSize={{ base: "15px", md: "17.5px" }}
+                              fontWeight="semibold"
+                              // w={{ base: "6rem", md: "6rem", lg: "8rem" }}
+                            >
                               Year Level:
                             </Text>
-                            <Text w="10rem" fontWeight="md" fontSize="17.5px">
+                            <Text
+                              w={{ base: "6rem", md: "6rem", lg: "8rem" }}
+                              fontWeight="md"
+                              fontSize={{ base: "15px", md: "17.5px" }}
+                            >
                               {key === "Bridging" ? "" : `${courseYear} Year `}
                             </Text>
                           </HStack>
 
                           <HStack
-                            spacing="20rem"
+                            ml={{
+                              base: "0",
+                              md: "auto",
+                              lg: "auto",
+                            }}
                             justifyContent="space-between"
+                            w={{
+                              base: "90vw",
+                              md: "45vw",
+                              lg: "45vw",
+                            }}
                           >
                             <HStack>
-                              <Text fontSize="17.5px" fontWeight="semibold">
+                              <Text
+                                fontSize={{ base: "15px", md: "17.5px" }}
+                                fontWeight="semibold"
+                              >
                                 Semester:
                               </Text>
-                              <Text w="20rem" fontWeight="md" fontSize="17.5px">
+                              <Text
+                                w={{ base: "6rem", md: "10rem", lg: "20rem" }}
+                                fontWeight="md"
+                                fontSize={{ base: "15px", md: "17.5px" }}
+                              >
                                 {key === "Bridging"
                                   ? key
                                   : `${capitalizeWords(
@@ -834,20 +871,27 @@ function Evaluation() {
                               </Text>
                             </HStack>
                             <HStack>
-                              <Text fontSize="17.5px" fontWeight="semibold">
+                              <Text
+                                fontSize={{ base: "15px", md: "17.5px" }}
+                                fontWeight="semibold"
+                              >
                                 School Year:
                               </Text>
-                              <Text>{calculateSchoolYear(year)}</Text>
+                              <Text fontSize={{ base: "15px", md: "17.5px" }}>
+                                {calculateSchoolYear(year)}
+                              </Text>
                             </HStack>
                           </HStack>
                         </VStack>
 
-                        <TableContainer overflowX="auto" w="100%" mt="1rem">
+                        <TableContainer overflowX="auto" w="90vw" mt="1rem">
                           <Table
                             variant="simple"
                             fontFamily="inter"
                             size="sm"
-                            style={{ minWidth: "800px" }}
+                            w="100%"
+                            overflowX="auto"
+                            style={{ minWidth: "200px" }}
                           >
                             <Thead bg="palette.primary" h="5rem">
                               <Tr>
@@ -1027,65 +1071,114 @@ function Evaluation() {
               {/* start from lottie */}
             </VStack>
             {evaluations.length !== 0 && (
-              <Box ml="13rem" mt="5rem">
+              <Box
+                ml={{ base: "0.5rem", md: "6rem", lg: "13rem" }}
+                mt="5rem"
+                mr="0.5rem"
+              >
                 <HStack>
-                  <Text fontWeight="bold" fontSize="18px">
+                  <Text
+                    fontWeight="bold"
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                  >
                     Evaluated by:
                   </Text>
-                  <Text ml="3rem" fontWeight="semibold" fontSize="20px">
+                  <Text ml="auto" fontWeight="semibold" fontSize="20px">
                     {facultyDetails &&
                       `${facultyDetails.faculty_fname} ${facultyDetails.faculty_mname} ${facultyDetails.faculty_lname}`}
                   </Text>
                 </HStack>
 
-                <HStack mt="3rem">
-                  <Text fontSize="18px" fontWeight="bold">
+                <HStack mt={{ base: "1rem", md: "3rem" }}>
+                  <Text
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                    fontWeight="bold"
+                  >
                     Total Credit Units Recommended:
                   </Text>
-                  <Text ml="2rem" fontWeight="semibold" fontSize="18px">
+                  <Text
+                    ml="auto"
+                    fontWeight="semibold"
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                  >
                     {totalEvalCreditUnits} unit(s)
                   </Text>
                 </HStack>
                 <HStack mt="8px">
-                  <Text fontSize="18px" fontWeight="bold">
+                  <Text
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                    fontWeight="bold"
+                  >
                     {" "}
                     Total Credit Units:
                   </Text>
-                  <Text ml="10.2rem" fontWeight="semibold" fontSize="18px">
+                  <Text
+                    ml="auto"
+                    fontWeight="semibold"
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                  >
                     {totalCreditUnits}
                     {""} unit(s)
                   </Text>
                 </HStack>
                 <HStack mt="8px">
-                  <Text fontSize="18px" fontWeight="bold">
+                  <Text
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                    fontWeight="bold"
+                  >
                     Taken Credit Units:
                   </Text>
-                  <Text ml="9.6rem" fontWeight="semibold" fontSize="18px">
+                  <Text
+                    ml="auto"
+                    fontWeight="semibold"
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                  >
                     {validatedTotalunits} {""} unit(s)
                   </Text>
                 </HStack>
                 <HStack mt="8px">
-                  <Text fontSize="18px" fontWeight="bold">
+                  <Text
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                    fontWeight="bold"
+                  >
                     Remaining Credit Units:
                   </Text>
-                  <Text ml="7rem" fontWeight="semibold" fontSize="18px">
+                  <Text
+                    ml="auto"
+                    fontWeight="semibold"
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                  >
                     {remainingCreditUnits} unit(s)
                   </Text>
                 </HStack>
                 <HStack mt="8px">
-                  <Text fontSize="18px" fontWeight="bold">
+                  <Text
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                    fontWeight="bold"
+                  >
                     Remaining Semester(s):
                   </Text>
-                  <Text ml="7rem" fontWeight="semibold" fontSize="18px">
+                  <Text
+                    ml="auto"
+                    fontWeight="semibold"
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                  >
                     {" "}
                     {Math.ceil(remainingCreditUnits / 23)} semester(s)
                   </Text>
                 </HStack>
                 <HStack mt="8px">
-                  <Text fontSize="18px" fontWeight="bold">
+                  <Text
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                    fontWeight="bold"
+                  >
                     Remaining Year(s):
                   </Text>
-                  <Text ml="10rem" fontWeight="semibold" fontSize="18px">
+                  <Text
+                    ml="auto"
+                    fontWeight="semibold"
+                    fontSize={{ base: "15px", md: "17.5px" }}
+                  >
                     {" "}
                     {Math.ceil(Math.ceil(remainingCreditUnits / 23) / 2)}{" "}
                     year(s)
