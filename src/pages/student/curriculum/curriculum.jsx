@@ -1239,7 +1239,7 @@ function Curriculum() {
       </Box>
 
       <VStack mt="0" mb="0" flexGrow={1} w="100%">
-        <InputGroup mt="8rem" ml="45rem" w="20rem">
+        <InputGroup mt="8rem" ml="0" w="20rem">
           <Input
             p="1rem"
             fontFamily="inter"
@@ -1267,49 +1267,52 @@ function Curriculum() {
           </InputRightElement>
         </InputGroup>
         <div ref={containerRef}>
-          <Button
-            ml="58rem"
-            colorScheme="teal"
-            style={{
-              color: "white",
-              transition: "background-color 0.3s ease, transform 0.3s ease",
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = "#43766C";
-              e.currentTarget.style.transform = "scale(1.05)";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = "#43766C";
-              e.currentTarget.style.transform = "scale(1)";
-            }}
-            onClick={handleDownloadPDF}
-          >
-            Download
-          </Button>
-
           <VStack>
             <VStack
               mb="3rem"
               spacing={2}
               justifyContent="flex-start"
-              mr="47rem"
+              ml="0"
+              w="90vw"
+              flexDirection="row"
             >
-              <Text mt="-10" fontSize="19px" fontWeight="bold">
+              <Text mt="-10" fontSize="19px" fontWeight="bold" pb="2rem">
                 {programName}
               </Text>
+
               <HStack mt="2rem" mr="5rem" spacing={4}>
                 <Text
                   fontWeight="bold"
                   fontSize="17.5px"
                   fontStyle="Bitter"
                   textAlign="center"
+                  pb="2rem"
                 >
                   {capitalizeWords(studentData.first_name)}{" "}
                   {capitalizeWords(studentData.middle_name)}{" "}
                   {capitalizeWords(studentData.last_name)}
                 </Text>
-                <Text>( {studentData.student_number})</Text>
+                <Text pb="2rem">( {studentData.student_number})</Text>
               </HStack>
+              <Button
+                ml="auto"
+                colorScheme="teal"
+                style={{
+                  color: "white",
+                  transition: "background-color 0.3s ease, transform 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = "#43766C";
+                  e.currentTarget.style.transform = "scale(1.05)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = "#43766C";
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
+                onClick={handleDownloadPDF}
+              >
+                Download
+              </Button>
             </VStack>
 
             {allCourses.length === 0 ? (
@@ -1348,42 +1351,87 @@ function Curriculum() {
                     key={key}
                     ref={index === foundCourseIndex ? scrollRef : null}
                   >
-                    <VStack spacing="1" align="flex-start">
+                    <VStack
+                      spacing="1"
+                      align="flex-start"
+                      flexDirection={{
+                        base: "column",
+                        md: "row",
+                        lg: "row",
+                      }}
+                      w="90vw"
+                    >
                       <HStack>
-                        <Text fontSize="17.5px" fontWeight="semibold">
+                        <Text
+                          fontSize={{ base: "15px", md: "17.5px" }}
+                          fontWeight="semibold"
+                        >
                           {" "}
                           Year Level:{" "}
                         </Text>
-                        <Text w="10rem" fontWeight="md" fontSize="17.5px">
+                        <Text
+                          w={{ base: "100%", md: "10rem" }}
+                          fontWeight="md"
+                          fontSize={{ base: "15px", md: "17.5px" }}
+                        >
                           {`${courseYear} Year `}
                         </Text>
                       </HStack>
 
-                      <HStack spacing="28rem" justifyContent="space-between">
+                      <HStack
+                        ml={{
+                          base: "0",
+                          md: "auto",
+                          lg: "auto",
+                        }}
+                        justifyContent="space-between"
+                        w={{
+                          base: "90vw",
+                          md: "45vw",
+                          lg: "45vw",
+                        }}
+                      >
                         <HStack>
-                          <Text fontSize="17.5px" fontWeight="semibold">
+                          <Text
+                            fontSize={{ base: "15px", md: "17.5px" }}
+                            fontWeight="semibold"
+                          >
                             {" "}
                             Semester:{" "}
                           </Text>
-                          <Text w="20rem" fontWeight="md" fontSize="17.5px">
+                          <Text
+                            fontWeight="md"
+                            fontSize={{ base: "15px", md: "17.5px" }}
+                          >
                             {`${capitalizeWords(courseSemester)} Semester `}
                           </Text>
                         </HStack>
-                        <HStack>
-                          <Text fontSize="17.5px" fontWeight="semibold">
+                        <HStack w="40%">
+                          <Text
+                            fontSize={{ base: "15px", md: "17.5px" }}
+                            fontWeight="semibold"
+                            w="50%"
+                          >
                             School Year:{" "}
                           </Text>
-                          <Text>{schoolYear}</Text>
+                          <Text
+                            w="50%"
+                            fontSize={{ base: "15px", md: "17.5px" }}
+                          >
+                            {schoolYear}
+                          </Text>
                         </HStack>
                       </HStack>
                     </VStack>
 
-                    <TableContainer overflowX="auto" w="100%" mt="1rem">
+                    <TableContainer overflowX="auto" w="90vw" mt="1rem">
                       <Table
                         variant="simple"
                         fontFamily="inter"
                         size="sm"
-                        style={{ minWidth: "800px" }}
+                        w="100%"
+                        overflowX="auto"
+                        style={{ minWidth: "200px" }}
                       >
                         <Thead bg="palette.primary" h="5rem">
                           <Tr>
@@ -1472,13 +1520,13 @@ function Curriculum() {
                                 <Td fontSize="14px" fontStyle="bitter">
                                   {courseItem.course_code}
                                 </Td>
-                                {/* {console.log(
-                                `Course Code: ${
-                                  courseItem.course_code
-                                }, Selected Grade: ${
-                                  selectedGrades[courseItem.course_code]
-                                }`
-                              )} */}
+                                {console.log(
+                                  `Course Code: ${
+                                    courseItem.course_code
+                                  }, Selected Grade: ${
+                                    selectedGrades[courseItem.course_code]
+                                  }`
+                                )}
                                 <Td
                                   className="course-title-cell"
                                   fontSize="14px"
@@ -1520,13 +1568,13 @@ function Curriculum() {
                                   {courseItem.credit_unit}
                                 </Td>
                                 <Td>
-                                  {/* {console.log(
-                                  `Course Code: ${
-                                    courseItem.course_code
-                                  }, Selected Grade: ${
-                                    selectedGrades[courseItem.course_code]
-                                  }`
-                                )} */}
+                                  {console.log(
+                                    `Course Code: ${
+                                      courseItem.course_code
+                                    }, Selected Grade: ${
+                                      selectedGrades[courseItem.course_code]
+                                    }`
+                                  )}
 
                                   <Select
                                     //placeholder="Grades"
@@ -1600,14 +1648,14 @@ function Curriculum() {
                                         ...selectedRemarks,
                                         [courseCode]: remarks,
                                       });
-                                      // console.log(
-                                      //   "New selectedGrades:",
-                                      //   selectedGrades
-                                      // );
-                                      // console.log(
-                                      //   "New selectedRemarks:",
-                                      //   selectedRemarks
-                                      // );
+                                      console.log(
+                                        "New selectedGrades:",
+                                        selectedGrades
+                                      );
+                                      console.log(
+                                        "New selectedRemarks:",
+                                        selectedRemarks
+                                      );
                                     }}
                                   >
                                     <option
@@ -1844,7 +1892,7 @@ function Curriculum() {
                       color="white"
                       bg="palette.primary"
                       w="7rem"
-                      ml="59rem"
+                      ml="0"
                       _hover={{
                         transition: "opacity 0.1s ease-in-out",
                       }}
