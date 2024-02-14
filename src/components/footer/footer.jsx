@@ -16,60 +16,69 @@ export default function Footer() {
       boxShadow="0px -2px 4px rgba(0, 0, 0, 0.2)" // Add a shadow
       color="white"
     >
-      <HStack flexWrap="wrap" justifyContent="center" pt="0.5rem" pb="0.5rem">
-        <VStack gap="0.3rem">
-          <HStack>
-            <Image w="45px" src={logo} />
-            <Text fontSize="0.7rem" fontFamily="inter">
-              PUP Student Curriculum Evaluation System
-            </Text>
-          </HStack>
-          <Box
-            fontSize="0.7rem"
-            justifyContent="left"
-            pb="1rem"
-            pr={{ base: "0vw", md: "10vw", lg: "10vw" }}
-          >
-            {" "}
-            <Image w="16px" src={gmail} />
-          </Box>
-          <HStack>
-            <Text fontSize="0.5rem" fontFamily="inter">
-              Copyright 2024 PUPSCES || All rights reserved
-            </Text>
-          </HStack>
-        </VStack>
-        <Box ml={{ base: "0vw", md: "30vw", lg: "30vw" }} w="10rem">
-          <VStack textAlign={{ base: "center", md: "left", lg: "left" }}>
-            <Link to="/terms">
+      <VStack pb="0.5rem">
+        <HStack flexWrap="wrap" justifyContent="center" pt="0.5rem">
+          <VStack gap="0.3rem">
+            <HStack>
+              <Image w="45px" src={logo} />
+              <Text fontSize="0.7rem" fontFamily="inter">
+                PUP Student Curriculum Evaluation System
+              </Text>
+            </HStack>
+            <Box
+              fontSize="0.7rem"
+              justifyContent="left"
+              pb="1rem"
+              pr={{ base: "0vw", md: "10vw", lg: "10vw" }}
+            >
+              {" "}
+              <Image w="16px" src={gmail} />
+            </Box>
+          </VStack>
+          <Box ml={{ base: "0vw", md: "30vw", lg: "30vw" }} w="10rem">
+            <VStack textAlign={{ base: "center", md: "left", lg: "left" }}>
+              <Link to="/terms">
+                <Text
+                  fontSize="0.6rem"
+                  fontFamily="inter"
+                  textAlign={{ base: "center", md: "left", lg: "left" }}
+                  w="10rem"
+                >
+                  About Us
+                </Text>
+              </Link>
               <Text
                 fontSize="0.6rem"
                 fontFamily="inter"
                 textAlign={{ base: "center", md: "left", lg: "left" }}
                 w="10rem"
               >
-                About Us
+                Privacy Policy
               </Text>
-            </Link>
-            <Text
-              fontSize="0.6rem"
-              fontFamily="inter"
-              textAlign={{ base: "center", md: "left", lg: "left" }}
-              w="10rem"
-            >
-              Privacy Policy
-            </Text>
-            <Text
-              fontSize="0.6rem"
-              fontFamily="inter"
-              textAlign={{ base: "center", md: "left", lg: "left" }}
-              w="10rem"
-            >
-              Terms and Condition
-            </Text>
-          </VStack>
-        </Box>
-      </HStack>
+              <Text
+                fontSize="0.6rem"
+                fontFamily="inter"
+                textAlign={{ base: "center", md: "left", lg: "left" }}
+                w="10rem"
+              >
+                Terms and Condition
+              </Text>
+            </VStack>
+          </Box>
+        </HStack>
+
+        <HStack mr="auto" ml={{ base: "auto", md: "3rem", lg: "3rem" }}>
+          <Text
+            fontSize="0.5rem"
+            fontFamily="inter"
+            textAlign={{ base: "center", md: "left", lg: "left" }}
+            // w="54vw"
+            w="10rem"
+          >
+            Copyright 2024 PUPSCES || All rights reserved
+          </Text>
+        </HStack>
+      </VStack>
     </Flex>
   );
 }
